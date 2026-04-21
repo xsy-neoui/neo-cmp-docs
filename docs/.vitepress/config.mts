@@ -18,12 +18,12 @@ export default defineConfig({
         rel: 'icon',
         type: 'image/x-icon',
         // head 中的 href 不会自动加 base，需与上面 base 保持一致
-        href: `${base}assets/img/favicon.ico`,
+        href: `${base}img/favicon.ico`,
       },
     ],
   ],
   themeConfig: {
-    logo: `/assets/img/nex-logo.png`,
+    logo: `/img/nex-logo.png`, // 会自动加 base
     search: {
       provider: 'local'
     },
@@ -66,6 +66,6 @@ export default defineConfig({
       label: '本页目录',
       level: [2, 3],
     },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/wibetter/neo-cmp-docs' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/xsy-neoui/neo-cmp-docs' }],
   },
 })

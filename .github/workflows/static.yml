@@ -33,11 +33,19 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      # upload-pages-artifact 不支持排除目录；与 VitePress base（/neo-cmp-docs/html/）一致，需保留仓库根下的 html/ 等结构，仅排除源码目录 docs
+      - name: Prepare site artifact (exclude docs)
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='docs/' \
+            --exclude='.git/' \
+            --exclude='_site/' \
+            ./ _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

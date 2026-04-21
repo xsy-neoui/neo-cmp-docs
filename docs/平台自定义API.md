@@ -141,7 +141,7 @@ const result = await request({
 
 通用代理以代码包形式提供（ZIP）。
 
-- **点击下载**：[proxy.zip](/assets/proxy.zip)。
+- **点击下载**：[proxy.zip](/proxy.zip)。
 
 包内主要包含：
 
