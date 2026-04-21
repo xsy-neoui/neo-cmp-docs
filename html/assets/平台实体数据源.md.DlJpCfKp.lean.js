@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as n,ag as t}from"./chunks/framework.ZOkEaY-d.js";const c=JSON.parse('{"title":"平台实体数据源","description":"","frontmatter":{},"headers":[],"relativePath":"平台实体数据源.md","filePath":"平台实体数据源.md"}'),p={name:"平台实体数据源.md"};function h(l,s,e,k,E,d){return a(),n("div",null,[...s[0]||(s[0]=[t("",66)])])}const g=i(p,[["render",h]]);export{c as __pageData,g as default};
