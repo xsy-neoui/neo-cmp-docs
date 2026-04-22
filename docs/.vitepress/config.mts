@@ -52,11 +52,13 @@ export default defineConfig({
           { text: '事件动作机制', link: '/事件动作机制' },
           { text: '组件模块共享', link: '/组件模块共享' },
           {
-            text: '平台组件使用',
+            text: '使用平台组件',
             items: [
               { text: 'H5版 列表组件使用说明', link: '/cmpDocs/H5版列表组件使用说明' },
+              { text: 'H5版 全局搜索组件使用说明', link: '/cmpDocs/H5版全局搜索组件使用说明' },
               { text: 'PC版 列表组件使用说明', link: '/cmpDocs/PC版列表组件使用说明' },
             ],
+            link: '/使用平台组件'
           },
           { text: '常见问题', link: '/常见问题' }
         ],
