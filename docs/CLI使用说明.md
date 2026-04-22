@@ -11,6 +11,10 @@
 - **样式与规范**：内置 Autoprefixer、Sass、PostCSS、ESLint、StyleLint。
 - **对接 NeoCRM**：支持将组件发布到 NeoCRM 平台（需按文档完成授权配置）。
 
+## 可用版本
+可用版本列表见: [neo-cmp-cli](https://www.npmjs.com/package/neo-cmp-cli?activeTab=versions)
+> 建议使用最新版本，历史版本含有未处理的 bug。
+
 ## 内置模板
 
 执行 `neo init` 时，CLI 会以交互列表展示可选模板；若同时传入 `-t`（模板类型）与 `-n`（项目名称），可跳过交互，直接从本仓库 `template/` 目录初始化对应模板工程。

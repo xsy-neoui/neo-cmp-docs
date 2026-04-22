@@ -164,7 +164,7 @@ const result = await request({
 
 **步骤 2**
 
-将 **[proxy.zip](/proxy.zip)** 上传到刚创建的代码包并完成发布（具体以管理端「上传 / 发布」流程为准）。
+将 **[forward.zip](/forward.zip)** 上传到刚创建的代码包并完成发布（具体以管理端「上传 / 发布」流程为准）。
 
 #### 使用「通用代理」请求「外部 API」
 
@@ -174,7 +174,7 @@ const result = await request({
 import { customApi } from 'neo-open-api';
 
 const result = await customApi.run({
-  apiUrl: '/proxy/forward', // 通用代理的 自定义API 地址
+  apiUrl: '/rest/data/v2.0/scripts/api/proxy/forward', // 通用代理的 自定义API 地址
   methodType: 'POST', // 固定的请求方式
   data: {
     url: 'https://third-party.example.com/api/v1/query',
@@ -191,7 +191,7 @@ const result = await customApi.run({
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `apiUrl` | `string` | 是 | 通用代理在平台上的自定义 API 路径（示例为 `/proxy/forward`，以发布后的路由为准） |
+| `apiUrl` | `string` | 是 | 通用代理在平台上的自定义 API 路径（示例为 `/rest/data/v2.0/scripts/api/proxy/forward`，以发布后的路由为准） |
 | `methodType` / `method` | `string` | 否 | 调用**平台自定义 API** 的 HTTP 方法；使用本通用代理时固定为 `POST` |
 | `data` | `object` | 否 | 传给通用代理 Java 方法的 JSON，见下表 |
 
@@ -217,10 +217,10 @@ const result = await customApi.run({
 
 ```typescript
 const result = await customApi.run({
-  apiUrl: '/proxy/forward',
+  apiUrl: '/rest/data/v2.0/scripts/api/proxy/forward',
   methodType: 'POST',
   data: {
-    url: 'https://third-party.example.com/api/v1/submit',
+    url: 'https://jsonplaceholder.typicode.com/posts',
     method: 'POST',
     data: {
       name: 'demo',
