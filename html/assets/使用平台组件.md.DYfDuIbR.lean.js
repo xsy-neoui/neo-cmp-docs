@@ -1,1 +1,0 @@
-import{_ as o,o as e,c as d,ag as c}from"./chunks/framework.ZOkEaY-d.js";const p=JSON.parse('{"title":"使用平台组件","description":"","frontmatter":{},"headers":[],"relativePath":"使用平台组件.md","filePath":"使用平台组件.md"}'),n={name:"使用平台组件.md"};function r(a,t,s,i,l,h){return e(),d("div",null,[...t[0]||(t[0]=[c("",9)])])}const g=o(n,[["render",r]]);export{p as __pageData,g as default};

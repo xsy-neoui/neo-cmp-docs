@@ -1,0 +1,186 @@
+/* 文档首页：右下角可拖拽圆形二维码，hover 大图；由组件 v-if 控制是否挂载 */
+
+.neo-qr-fab {
+  --neo-qr-border: #2b7bf2;
+  position: fixed;
+  z-index: 400;
+  box-sizing: border-box;
+  overflow: visible;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.neo-qr-fab.is-dragging {
+  cursor: grabbing;
+}
+
+/* 大图弹层在上方，bridge 在三角与圆钮之间，避免丢 hover；knob 最上层可拖 */
+.neo-qr-fab__popover {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 12px 14px;
+  max-width: min(280px, calc(100vw - 32px));
+  border-radius: 10px;
+  background: var(--vp-c-bg, #fff);
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  transform: translateX(-50%) translateY(2px) scale(0.99);
+  transform-origin: bottom center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s;
+  pointer-events: none;
+}
+
+html.dark .neo-qr-fab__popover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* 小三角，指向小圆 */
+.neo-qr-fab__popover::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: var(--vp-c-divider);
+  transform: translateX(-50%);
+}
+
+.neo-qr-fab__popover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: -1px;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: var(--vp-c-bg, #fff);
+  transform: translateX(-50%);
+}
+
+.neo-qr-fab__bridge {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 100%;
+  width: 220px;
+  max-width: min(220px, 90vw);
+  height: 10px;
+  margin-left: 0;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  background: transparent;
+}
+
+.neo-qr-fab__knob {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 2px solid var(--neo-qr-border, #2b7bf2);
+  border-radius: 50%;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  cursor: move;
+  cursor: grab;
+  overflow: hidden;
+  appearance: none;
+}
+
+.neo-qr-fab.is-dragging .neo-qr-fab__knob {
+  cursor: grabbing;
+}
+
+html.dark .neo-qr-fab__knob {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.neo-qr-fab__knob:hover,
+.neo-qr-fab__knob:focus-visible {
+  box-shadow: 0 4px 16px rgba(43, 123, 242, 0.22);
+}
+
+.neo-qr-fab__knob:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1, var(--neo-qr-border));
+  outline-offset: 2px;
+}
+
+.neo-qr-fab__thumb {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.neo-qr-fab:hover .neo-qr-fab__popover,
+.neo-qr-fab:focus-within .neo-qr-fab__popover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.neo-qr-fab.is-dragging .neo-qr-fab__popover,
+.neo-qr-fab.is-dragging:hover .neo-qr-fab__popover,
+.neo-qr-fab.is-dragging:focus-within .neo-qr-fab__popover {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.neo-qr-fab__head {
+  margin: 0 0 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--vp-c-text-1);
+}
+
+.neo-qr-fab__big-wrap {
+  width: 200px;
+  max-width: 100%;
+}
+
+.neo-qr-fab__big {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+@media (min-width: 480px) {
+  .neo-qr-fab__big-wrap,
+  .neo-qr-fab__big {
+    width: 220px;
+  }
+}

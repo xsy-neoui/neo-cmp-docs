@@ -36,6 +36,8 @@ export default defineConfig({
         items: [
           { text: '快速开始', link: '/快速开始' },
           { text: '使用说明', link: '/CLI使用说明' },
+          { text: '版本列表', link: 'https://www.npmjs.com/package/neo-cmp-cli?activeTab=versions' },
+          { text: '使用反馈', link: 'https://github.com/xsy-neoui/neo-cmp-docs/issues' },
         ],
       },
       { text: '组件开发规范', link: '/组件开发规范' },

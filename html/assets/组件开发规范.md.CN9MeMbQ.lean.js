@@ -1,1 +1,0 @@
-import{_ as e,o as d,c as o,ag as r}from"./chunks/framework.ZOkEaY-d.js";const p=JSON.parse('{"title":"自定义组件开发规范","description":"","frontmatter":{},"headers":[],"relativePath":"组件开发规范.md","filePath":"组件开发规范.md"}'),c={name:"组件开发规范.md"};function a(s,t,n,l,i,h){return d(),o("div",null,[...t[0]||(t[0]=[r("",60)])])}const u=e(c,[["render",a]]);export{p as __pageData,u as default};
