@@ -1,1 +1,0 @@
-import{_ as i,o as a,c as n,ag as e}from"./chunks/framework.ZOkEaY-d.js";const E=JSON.parse('{"title":"组件模块共享","description":"","frontmatter":{},"headers":[],"relativePath":"组件模块共享.md","filePath":"组件模块共享.md"}'),p={name:"组件模块共享.md"};function t(l,s,h,k,d,o){return a(),n("div",null,[...s[0]||(s[0]=[e("",10)])])}const c=i(p,[["render",t]]);export{E as __pageData,c as default};
