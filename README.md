@@ -3,3 +3,5 @@
 
 ## 在线使用手册
 [https://xsy-neoui.github.io/neo-cmp-docs/](https://xsy-neoui.github.io/neo-cmp-docs/)
+
+国内访问地址: [https://neo-cmp-docs.netlify.app/](https://neo-cmp-docs.netlify.app/)。
