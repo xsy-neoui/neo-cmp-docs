@@ -9,7 +9,8 @@ const MARGIN = 100
 /** localStorage 中保存 last x/y 的键名 */
 const STORAGE_KEY = 'neo-qr-fab-pos'
 /** 公网/含 base 的二维码图路径 */
-const src = withBase('/img/neo-cmp-docs.png')
+// const src = withBase('/img/neo-cmp-docs.png') // github 可访问地址
+const src = withBase('/img/netlify.png')
 
 const { page } = useData()
 
