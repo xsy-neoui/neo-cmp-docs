@@ -1,0 +1,1 @@
+import{_ as a,o as i,c as e,ah as t}from"./chunks/framework.DEbGi21A.js";const c=JSON.parse('{"title":"快速开始","description":"","frontmatter":{},"headers":[],"relativePath":"快速开始.md","filePath":"快速开始.md"}'),n={name:"快速开始.md"};function l(h,s,p,o,r,d){return i(),e("div",null,[...s[0]||(s[0]=[t("",26)])])}const g=a(n,[["render",l]]);export{c as __pageData,g as default};

@@ -2,7 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 // 部署地址：https://wibetter.github.io/neo-cmp-docs/html
-const base = '/neo-cmp-docs/html/'
+// const base = '/neo-cmp-docs/html/'; // github pages 部署地址
+
+const base = '/'; // netlify pages 部署地址
 
 export default defineConfig({
   base,
