@@ -221,7 +221,7 @@ watch(
       aria-label="文档站二维码，悬停查看大图，可按住拖动"
     >
       <div class="neo-qr-fab__popover" role="tooltip">
-        <p class="neo-qr-fab__head">手机扫描访问</p>
+        <p class="neo-qr-fab__head">手机扫码访问</p>
         <div class="neo-qr-fab__big-wrap">
           <img
             class="neo-qr-fab__big"
