@@ -3,6 +3,8 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 // 自定义根布局：在默认 Layout 上挂插槽（如 layout-bottom 里的首页二维码浮层）
 import Layout from './Layout.vue'
+// 全局注册的自定义组件
+import CaseShowcase from './components/CaseShowcase.vue'
 // 全局样式：右下角可拖拽二维码（neo-qr-fab）等
 import './neo-qr-fab.css'
 
@@ -17,4 +19,8 @@ export default {
   extends: DefaultTheme,
   /** 使用自定义根布局组件，向主题提供插槽内容 */
   Layout,
+  /** 全局注册自定义组件，使其可在 Markdown 中直接使用 */
+  enhanceApp({ app }) {
+    app.component('CaseShowcase', CaseShowcase)
+  },
 } satisfies Theme
