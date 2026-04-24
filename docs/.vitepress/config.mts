@@ -42,8 +42,9 @@ export default defineConfig({
           { text: '使用反馈', link: 'https://github.com/xsy-neoui/neo-cmp-docs/issues' },
         ],
       },
-      { text: '示例模板', link: '/示例模板' },
       { text: '组件开发规范', link: '/组件开发规范' },
+      { text: '示例模板', link: '/示例模板' },
+      { text: '案例展示', link: '/案例展示' },
     ],
     sidebar: [
       {
@@ -68,6 +69,7 @@ export default defineConfig({
             link: '/使用平台组件'
           },
           { text: '示例模板', link: '/示例模板' },
+          { text: '案例展示', link: '/案例展示' },
           { text: '常见问题', link: '/常见问题' }
         ],
       },

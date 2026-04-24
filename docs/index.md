@@ -11,6 +11,9 @@ hero:
       text: 开始阅读
       link: /CLI使用说明
     - theme: alt
+      text: 案例展示
+      link: /案例展示
+    - theme: alt
       text: 组件开发规范
       link: /组件开发规范
     - theme: alt
