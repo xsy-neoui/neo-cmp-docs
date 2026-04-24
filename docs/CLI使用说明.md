@@ -42,8 +42,6 @@ neo init -t amap -n myMapCmp
 neo init -t vue2 -n myVue2Cmp
 ```
 
-> **说明**：在默认的本地拷贝模式下，若 `templateList` 中仍保留 `react-ts`、`react` 等目录，可通过 `neo init -t react-ts -n xxx` 等方式创建，但这些模板不会出现在上述交互列表中。`react`（非 TypeScript）模板在 CLI 侧已标记为废弃，建议优先选用上表中的模板。
-
 
 ## 命令参考
 
