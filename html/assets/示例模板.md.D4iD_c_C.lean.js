@@ -1,0 +1,1 @@
+import{_ as e,o as d,c as a,ah as c}from"./chunks/framework.DE8HRBTl.js";const m=JSON.parse('{"title":"自定义组件模板列表","description":"","frontmatter":{},"headers":[],"relativePath":"示例模板.md","filePath":"示例模板.md"}'),i={name:"示例模板.md"};function o(s,t,p,n,l,h){return d(),a("div",null,[...t[0]||(t[0]=[c("",82)])])}const b=e(i,[["render",o]]);export{m as __pageData,b as default};
