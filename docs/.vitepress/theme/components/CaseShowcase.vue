@@ -11,8 +11,9 @@ interface CaseItem {
 const cases: CaseItem[] = [
   {
     title: '案例一：H5 端自定义列表页',
-    desc: '基于自定义组件快速搭建的 H5 端列表页面，支持全局搜索、打开AI对话框、分页加载等移动端交互。',
+    desc: '基于自定义组件快速搭建的 H5 端列表页面，支持全局搜索、打开AI对话框、分页加载列表数据等移动端交互。',
     gif: withBase('/gif/H5列表页.gif'),
+    template: '安装使用：neo init -t neo-web-entity-grid -n myWebListCmp'
   },
   {
     title: '案例二：PC 端自定义列表页',
