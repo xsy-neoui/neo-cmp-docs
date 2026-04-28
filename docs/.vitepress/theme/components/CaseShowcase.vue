@@ -6,6 +6,7 @@ interface CaseItem {
   title: string
   desc: string
   gif: string
+  template: string
 }
 
 const cases: CaseItem[] = [
@@ -13,22 +14,25 @@ const cases: CaseItem[] = [
     title: '案例一：H5 端自定义列表页',
     desc: '基于自定义组件快速搭建的 H5 端列表页面，支持全局搜索、打开AI对话框、分页加载列表数据等移动端交互。',
     gif: withBase('/gif/H5列表页.gif'),
-    template: '安装使用：neo init -t neo-web-entity-grid -n myWebListCmp'
+    template: 'neo init -t neo-h5-cmps -n myH5Cmps'
   },
   {
     title: '案例二：PC 端自定义列表页',
     desc: '使用平台预置列表组件 + 自定义组件（自定义查询条件）实现个性化的查询+数据列表展示。',
     gif: withBase('/gif/基于平台列表实现的自定义列表页.gif'),
+    template: 'neo init -t neo-web-entity-grid -n myWebListCmp'
   },
   {
     title: '案例三：BI 数据页',
     desc: '基于自定义报表组件实现酷炫的BI数据大屏效果页',
     gif: withBase('/gif/BI数据页.gif'),
+    template: 'neo init -t neo-pipeline-zh-cmps -n pipelineCmps'
   },
   {
     title: '案例四：自定义表单页（新增业务数据）',
     desc: '通过自定义组件实现子表的批量数据插入与汇总统计功能。',
     gif: withBase('/gif/自定义批量插入和自定义汇总.gif'),
+    template: 'neo init -t neo-web-form -n myCustomForm'
   },
 ]
 
@@ -92,18 +96,29 @@ watch(activeIndex, async () => {
       <div
         v-for="(item, index) in cases"
         :key="index"
-        class="case-card"
-        @click="openPreview(index)"
+        class="case-item"
       >
-        <div class="case-card__cover">
-          <img :src="item.gif" :alt="item.title" loading="lazy" />
-          <div class="case-card__overlay">
-            <span class="case-card__play">▶ 点击预览</span>
+        <h3 class="case-item__title">{{ item.title }}</h3>
+        <div
+          class="case-card"
+          @click="openPreview(index)"
+        >
+          <div class="case-card__cover">
+            <img :src="item.gif" :alt="item.title" loading="lazy" />
+            <div class="case-card__overlay">
+              <span class="case-card__play">▶ 点击预览</span>
+            </div>
           </div>
-        </div>
-        <div class="case-card__body">
-          <h3 class="case-card__title">{{ item.title }}</h3>
-          <p class="case-card__desc">{{ item.desc }}</p>
+          <div class="case-card__body">
+            <p class="case-card__desc">{{ item.desc }}</p>
+            <div
+              v-if="item.template"
+              class="case-card__template"
+            >
+              <span class="case-card__template-label">安装模板</span>
+              <code class="case-card__template-code">{{ item.template }}</code>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -152,6 +167,13 @@ watch(activeIndex, async () => {
             </div>
             <div class="case-preview__footer">
               <p class="case-preview__desc">{{ cases[activeIndex].desc }}</p>
+              <div
+                v-if="cases[activeIndex].template"
+                class="case-preview__template"
+              >
+                <span class="case-preview__template-label">安装模板：</span>
+                <pre class="case-preview__template-code"><code>{{ cases[activeIndex].template }}</code></pre>
+              </div>
             </div>
           </div>
         </div>
@@ -171,6 +193,21 @@ watch(activeIndex, async () => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
+}
+
+.case-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.case-item__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--vp-c-text-1);
 }
 
 /* ---- 卡片 ---- */
@@ -243,15 +280,10 @@ html.dark .case-card:hover {
 }
 
 .case-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   padding: 16px 20px 20px;
-}
-
-.case-card__title {
-  margin: 0 0 8px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--vp-c-text-1);
 }
 
 .case-card__desc {
@@ -259,6 +291,29 @@ html.dark .case-card:hover {
   font-size: 14px;
   line-height: 1.6;
   color: var(--vp-c-text-2);
+}
+
+.case-card__template-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--vp-c-text-3);
+}
+
+.case-card__template-code {
+  display: block;
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  word-break: break-word;
 }
 
 /* ---- 全屏预览 ---- */
@@ -296,7 +351,7 @@ html.dark .case-card:hover {
 
 .case-preview__inner {
   --case-preview-header-h: 72px;
-  --case-preview-footer-h: 96px;
+  --case-preview-footer-min: 96px;
   /* 94vh 与 上下 padding 叠加会超过 100vh，用 calc 将弹层限制在视口内 */
   --case-preview-avail-h: min(
     94vh,
@@ -433,10 +488,11 @@ html.dark .case-preview__inner {
   }
 }
 
-/* 固定高度底部 */
+/* 底部：描述 + 模板，内容多时可滚动 */
 .case-preview__footer {
-  flex: 0 0 var(--case-preview-footer-h);
-  height: var(--case-preview-footer-h);
+  flex: 0 1 auto;
+  min-height: var(--case-preview-footer-min);
+  max-height: min(38vh, 280px);
   box-sizing: border-box;
   flex-shrink: 0;
   z-index: 2;
@@ -446,6 +502,9 @@ html.dark .case-preview__inner {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .case-preview__desc {
@@ -453,6 +512,36 @@ html.dark .case-preview__inner {
   font-size: 14px;
   line-height: 1.6;
   color: var(--vp-c-text-2);
+}
+
+.case-preview__template-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--vp-c-text-3);
+  text-transform: uppercase;
+}
+
+.case-preview__template-code {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.case-preview__template-code code {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* ---- 过渡动画 ---- */
@@ -475,14 +564,14 @@ html.dark .case-preview__inner {
 
   .case-preview__inner {
     --case-preview-header-h: 64px;
-    --case-preview-footer-h: 88px;
+    --case-preview-footer-min: 80px;
     border-radius: 12px;
   }
 
   .case-preview__inner--tall-asset {
     /* 为竖长图多挤出中间可视滚动区，减轻头尾「挡住」长图两端的感受 */
     --case-preview-header-h: 56px;
-    --case-preview-footer-h: 76px;
+    --case-preview-footer-min: 72px;
   }
 
   .case-preview__header {
