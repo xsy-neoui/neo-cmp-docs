@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a,ah as i}from"./chunks/framework.DE8HRBTl.js";const k=JSON.parse('{"title":"组件模块共享","description":"","frontmatter":{},"headers":[],"relativePath":"组件模块共享.md","filePath":"组件模块共享.md"}'),n={name:"组件模块共享.md"};function o(d,s,l,r,p,h){return t(),a("div",null,[...s[0]||(s[0]=[i("",34)])])}const g=e(n,[["render",o]]);export{k as __pageData,g as default};

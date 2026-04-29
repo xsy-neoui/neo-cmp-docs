@@ -42,7 +42,6 @@ neo init -t amap -n myMapCmp
 neo init -t vue2 -n myVue2Cmp
 ```
 
-
 ## 命令参考
 
 | 命令 | 说明 | 参数 |
@@ -57,43 +56,6 @@ neo init -t vue2 -n myVue2Cmp
 | `neo push cmp` | 构建并发布到 NeoCRM | `--name` 组件名 |
 | `neo pull cmp` | 从 NeoCRM 拉取线上组件到当前项目 | `--name` 组件名 |
 | `neo delete cmp` | 删除 NeoCRM 上的指定自定义组件 | `--name` 组件名 |
-
-## CLI 使用相关常见问题
-
-**Q1：在 Windows 的 VS Code 终端中执行 `neo` 相关命令报错**
-
-A：若提示「在此系统上禁止运行脚本」，多为 PowerShell 执行策略限制。可在当前用户范围放宽策略（需自行评估安全策略是否适用）：
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-```
-
-> 说明：上述命令允许当前用户在 Windows 上执行脚本。更多背景见 Microsoft 文档：[about_Execution_Policies](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.5)。
-
-**Q2：提示「无法将“xxx”项识别为 cmdlet、函数、脚本文件或可运行程序的名称」**
-
-A：多为 **PATH** 未包含 npm 全局可执行文件目录。可按下面步骤将 npm 全局路径加入 PATH（PowerShell 示例）：
-
-**步骤 1**：查看 npm 全局前缀路径
-
-```powershell
-$npmPath = npm config get prefix
-```
-
-**步骤 2**：将路径加入当前会话的 PATH（立即生效）
-
-```powershell
-$env:PATH += ";$npmPath"
-```
-
-**步骤 3**：写入用户级环境变量（新开终端仍生效）
-
-```powershell
-[Environment]::SetEnvironmentVariable("PATH", $env:PATH + ";$npmPath", "User")
-```
-
-> **说明**：若安装 Node.js 时未勾选安装必要工具等选项，也可能导致全局命令不可用；请结合本机安装方式排查。
-
 
 ## 登录授权配置
 
@@ -202,7 +164,7 @@ module.exports = {
 | 推荐程度 | 优先推荐 | 备选 |
 
 
-## 组件开发说明
+## 开发自定义组件
 
 ### 1. 默认自动识别自定义组件
 
@@ -306,7 +268,7 @@ neo delete cmp -n xxCmp
 
 ## 前端工程配置说明
 
-neo-cmp-cli 内置一套完整默认配置；若需自定义，可执行 `neo config init` 生成 `neo.config.js` 后按需修改。
+neo-cmp-cli 内置一套完整前端工程配置。若需自定义，可执行 `neo config init` 生成 `neo.config.js` 后按需调整和补充。
 
 以下为常用配置片段（可按需组合）。
 

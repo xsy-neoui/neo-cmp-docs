@@ -34,7 +34,6 @@ export default defineConfig({
       {
         text: 'CLI',
         items: [
-          { text: '快速开始', link: '/快速开始' },
           { text: '使用说明', link: '/CLI使用说明' },
           { text: '版本列表', link: 'https://www.npmjs.com/package/neo-cmp-cli?activeTab=versions' },
           { text: '使用反馈', link: 'https://github.com/xsy-neoui/neo-cmp-docs/issues' },
@@ -46,17 +45,26 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: '文档',
+        text: '开发手册',
         items: [
-          { text: '快速开始', link: '/快速开始' },
+          { text: '安装', link: '/安装' },
+          { text: '创建一个自定义组件', link: '/创建一个自定义组件' },
           { text: 'CLI使用说明', link: '/CLI使用说明' },
-          { text: '组件开发规范', link: '/组件开发规范' },
-          { text: '可用属性配置项', link: '/可用属性配置项' },
-          { text: '平台实体数据源', link: '/平台实体数据源' },
-          { text: '平台自定义API', link: '/平台自定义API' },
-          { text: '环境变量与工具函数', link: '/环境变量与工具函数' },
-          { text: '事件动作机制', link: '/事件动作机制' },
-          { text: '组件模块共享', link: '/组件模块共享' },
+          {
+            text: '动态数据源',
+            items: [
+              { text: '平台实体数据源', link: '/平台实体数据源' },
+              { text: '平台自定义API', link: '/平台自定义API' },
+            ],
+          },
+          {
+            text: '工具和方法',
+            items: [
+              { text: '环境变量与工具函数', link: '/环境变量与工具函数' },
+              { text: '事件动作机制', link: '/事件动作机制' },
+              { text: '组件模块共享', link: '/组件模块共享' },
+            ],
+          },
           {
             text: '使用平台组件',
             items: [
@@ -66,14 +74,13 @@ export default defineConfig({
             ],
             link: '/使用平台组件'
           },
-          { text: '示例模板', link: '/示例模板' },
-          { text: '案例展示', link: '/案例展示' },
+          { text: '可用属性配置项', link: '/可用属性配置项' },
           { text: '常见问题', link: '/常见问题' }
         ],
       },
     ],
     outline: {
-      label: '本页目录',
+      label: '快速导航',
       level: [2, 3],
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/xsy-neoui/neo-cmp-docs' }],
