@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as n,ah as e}from"./chunks/framework.DE8HRBTl.js";const c=JSON.parse('{"title":"常见问题","description":"","frontmatter":{},"headers":[],"relativePath":"常见问题.md","filePath":"常见问题.md"}'),t={name:"常见问题.md"};function l(h,s,p,o,k,r){return a(),n("div",null,[...s[0]||(s[0]=[e("",41)])])}const E=i(t,[["render",l]]);export{c as __pageData,E as default};
