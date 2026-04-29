@@ -1,1 +1,0 @@
-import{_ as e,o as d,c as a,ah as i}from"./chunks/framework.DEbGi21A.js";const m=JSON.parse('{"title":"自定义组件模板列表","description":"","frontmatter":{},"headers":[],"relativePath":"示例模板.md","filePath":"示例模板.md"}'),s={name:"示例模板.md"};function c(o,t,r,h,l,n){return d(),a("div",null,[...t[0]||(t[0]=[i("",82)])])}const b=e(s,[["render",c]]);export{m as __pageData,b as default};
