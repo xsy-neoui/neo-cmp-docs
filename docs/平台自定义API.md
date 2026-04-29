@@ -1,9 +1,11 @@
 # 平台自定义 API
 
-平台自定义 API（`customApi`）用于封装自定义业务逻辑，支持以 API 接口的形式开放给自定义组件使用。例如：
+在自定义组件中可通过`自定义 API`获取平台业务数据或外部接口数据。
 
-- 将 ERP 系统数据同步至 CRM 系统时，可将多个对象的数据同时推送至销售易自定义 API。在自定义 API 中，根据业务规则对数据进行拆分，并分别存储到相应对象中。
+`平台实体数据源`目前仅能获取单一实体的数据源数据，而平台自定义 API（`customApi`）可用于封装自定义业务逻辑（比如：组合多个实体数据源的数据），支持以 API 接口的形式开放给自定义组件使用。例如：
+
 - 根据业务需求，在自定义 API 中实现复杂的查询逻辑，并将查询结果返回给 API 调用方。
+- 通过自定义 API 代理不支持 CORS 跨域的外部数据接口。
 
 如何开发平台自定义 API 见[《自定义 API 开发手册》](https://doc.xiaoshouyi.com/?sso-domain=login-cd.xiaoshouyi.com#/proMan/workplaceDetail?url=%2F%2Fconcepts%2FdevelopmentPlatform_businessLogicDevelopment_customApi.html&id=1558&dir=output_1776334087332&time=1776751244974&proId=1097&checkStat=undefined)。
 

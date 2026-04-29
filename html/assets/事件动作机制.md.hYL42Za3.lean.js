@@ -1,1 +1,0 @@
-import{_ as i,o as a,c as n,ah as p}from"./chunks/framework.DEbGi21A.js";const g=JSON.parse('{"title":"事件动作机制","description":"","frontmatter":{},"headers":[],"relativePath":"事件动作机制.md","filePath":"事件动作机制.md"}'),h={name:"事件动作机制.md"};function l(t,s,k,e,E,r){return a(),n("div",null,[...s[0]||(s[0]=[p("",43)])])}const y=i(h,[["render",l]]);export{g as __pageData,y as default};
