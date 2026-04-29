@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as n,ah as l}from"./chunks/framework.DEbGi21A.js";const r=JSON.parse('{"title":"可用属性配置项","description":"","frontmatter":{},"headers":[],"relativePath":"可用属性配置项.md","filePath":"可用属性配置项.md"}'),t={name:"可用属性配置项.md"};function e(h,s,p,k,o,d){return a(),n("div",null,[...s[0]||(s[0]=[l("",267)])])}const g=i(t,[["render",e]]);export{r as __pageData,g as default};
