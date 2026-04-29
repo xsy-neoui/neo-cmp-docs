@@ -9,7 +9,7 @@
 - **多种构建形态**：本地预览（含热更新与代理）、外链调试、库构建（UMD / ESM）、部署与发布。
 - **灵活可配**：可配置构建入口、路径别名、代理、公共样式注入、ESLint / StyleLint、以及 Babel / Loader / Plugin 等扩展。
 - **样式与规范**：内置 Autoprefixer、Sass、PostCSS、ESLint、StyleLint。
-- **对接 NeoCRM**：支持将组件发布到 NeoCRM 平台（需按文档完成授权配置）。
+- **对接 NeoCRM**：支持将组件发布到 NeoCRM 平台（需要先登录授权）。
 
 ## 可用版本
 可用版本列表见: [neo-cmp-cli](https://www.npmjs.com/package/neo-cmp-cli?activeTab=versions)
@@ -17,7 +17,7 @@
 
 ## 内置模板
 
-执行 `neo init` 时，CLI 会以交互列表展示可选模板；若同时传入 `-t`（模板类型）与 `-n`（项目名称），可跳过交互，直接从本仓库 `template/` 目录初始化对应模板工程。
+执行 `neo init` 时，CLI 会以交互列表展示可选模板；若同时传入 `-t`（模板类型）与 `-n`（项目名称），可跳过交互，直接初始化对应模板工程。
 
 | 模板类型 | 说明 | 参考仓库 |
 | --- | --- | --- |
