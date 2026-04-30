@@ -1,0 +1,25 @@
+/*
+ * 文档表格全局样式
+ * 替代 Markdown 中的 <div style="min-width: 60px"> 等内联样式，
+ * 保持 Markdown 源码的可读性。
+ */
+
+/* 所有 VitePress 内容区表格：单元格最小宽度，防止列被压缩过窄 */
+.vp-doc table th,
+.vp-doc table td {
+  min-width: 80px;
+}
+
+/* 示例模板页：模板表格的「描述」列自动换行、最小宽度 320px */
+.neo-tpl-table th:nth-child(3),
+.neo-tpl-table td:nth-child(3) {
+  min-width: 320px;
+}
+
+/* 示例组件总览表：「描述」列（第 7 列）宽度与自动换行 */
+.neo-overview-table th:nth-child(7),
+.neo-overview-table td:nth-child(7) {
+  width: 200px;
+  white-space: normal;
+  word-break: break-word;
+}

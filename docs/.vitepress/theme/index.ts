@@ -7,6 +7,8 @@ import Layout from './Layout.vue'
 import CaseShowcase from './components/CaseShowcase.vue'
 // 全局样式：右下角可拖拽二维码（neo-qr-fab）等
 import './neo-qr-fab.css'
+// 全局样式：文档表格列宽（替代 Markdown 中的内联 style）
+import './neo-table.css'
 
 /**
  * 自定义主题入口
