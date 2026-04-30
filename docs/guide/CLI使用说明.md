@@ -1,6 +1,6 @@
 # Neo 自定义组件开发工具
 
-**neo-cmp-cli** 是面向 Neo 平台的自定义组件开发工具。它基于 [AKFun](https://github.com/wibetter/akfun) 的工程能力，提供项目初始化、编译构建、本地预览与热更新、多技术栈支持以及发布到 NeoCRM 等能力。
+**neo-cmp-cli** 是面向 Neo 平台的自定义组件开发工具。它基于 [AKFun](https://akfun-docs.netlify.app) 的工程能力，提供项目初始化、编译构建、本地预览与热更新、多技术栈支持以及发布到 NeoCRM 等能力。
 
 ## 主要特性
 
@@ -414,4 +414,4 @@ module.exports = {
 ```
 
 
-更多工程配置说明见 [AKFun 工程配置说明](https://www.npmjs.com/package/akfun)。
+更多工程配置说明见 [AKFun 使用手册](https://akfun-docs.netlify.app/config/basic.html)。
