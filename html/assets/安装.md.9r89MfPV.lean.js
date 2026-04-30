@@ -1,1 +1,0 @@
-import{_ as i,o as a,c as e,ah as t}from"./chunks/framework.DEbGi21A.js";const c=JSON.parse('{"title":"安装","description":"","frontmatter":{},"headers":[],"relativePath":"安装.md","filePath":"安装.md"}'),n={name:"安装.md"};function p(l,s,h,r,o,k){return a(),e("div",null,[...s[0]||(s[0]=[t("",24)])])}const g=i(n,[["render",p]]);export{c as __pageData,g as default};

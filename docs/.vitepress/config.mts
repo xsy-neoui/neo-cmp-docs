@@ -36,12 +36,11 @@ export default defineConfig({
       {
         text: 'CLI',
         items: [
-          { text: '使用说明', link: '/CLI使用说明' },
+          { text: '使用说明', link: '/guide/CLI使用说明' },
           { text: '版本列表', link: 'https://www.npmjs.com/package/neo-cmp-cli?activeTab=versions' },
           { text: '使用反馈', link: 'https://github.com/xsy-neoui/neo-cmp-docs/issues' },
         ],
       },
-      { text: '组件开发规范', link: '/组件开发规范' },
       { text: '示例模板', link: '/示例模板' },
       { text: '案例展示', link: '/案例展示' },
     ],
@@ -49,23 +48,33 @@ export default defineConfig({
       {
         text: '开发手册',
         items: [
-          { text: '安装', link: '/安装' },
-          { text: '创建一个自定义组件', link: '/创建一个自定义组件' },
-          { text: 'CLI使用说明', link: '/CLI使用说明' },
+          { text: '安装', link: '/guide/安装' },
+          { text: '快速开始', link: '/guide/快速开始' },
+          { text: 'CLI使用说明', link: '/guide/CLI使用说明' },
+          { text: '组件开发规范', link: '/guide/组件开发规范' },
           {
             text: '动态数据源',
             items: [
-              { text: '平台实体数据源', link: '/平台实体数据源' },
-              { text: '平台自定义API', link: '/平台自定义API' },
+              { text: '平台实体数据源', link: '/datasource/平台实体数据源' },
+              { text: '平台自定义API', link: '/datasource/平台自定义API' },
             ],
           },
           {
             text: '工具和方法',
             items: [
-              { text: '环境变量与工具函数', link: '/环境变量与工具函数' },
-              { text: '事件动作机制', link: '/事件动作机制' },
-              { text: '组件模块共享', link: '/组件模块共享' },
+              { text: '组件运行时上下文', link: '/tools/组件运行时上下文' },
+              { text: '事件动作机制', link: '/tools/事件动作机制' },
+              { text: '组件模块共享', link: '/tools/组件模块共享' },
             ],
+          },
+          {
+            text: '组件属性配置项',
+            items: [
+              { text: '表单类配置项', link: '/config/表单类配置项' },
+              { text: '数据源类配置项', link: '/config/数据源类配置项' },
+              { text: '自定义配置项开发', link: '/config/自定义配置项开发' },
+            ],
+            link: '/config/组件属性配置项'
           },
           {
             text: '使用平台组件',
@@ -76,7 +85,6 @@ export default defineConfig({
             ],
             link: '/使用平台组件'
           },
-          { text: '可用属性配置项', link: '/可用属性配置项' },
           { text: '常见问题', link: '/常见问题' }
         ],
       },
