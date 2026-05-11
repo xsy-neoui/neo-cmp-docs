@@ -10,6 +10,10 @@ export default defineConfig({
   base,
   outDir: '../html',
   assetsDir: './assets',
+  // 将 public 目录调整到项目根目录（docs 同级），统一管理静态资源
+  vite: {
+    publicDir: '../public',
+  },
   title: '自定义组件开发手册',
   description:
     '自定义组件开发使用说明，涵盖 CLI、组件开发规范、设计器属性、数据源、上下文、联动与常见问题等',
@@ -23,7 +27,7 @@ export default defineConfig({
         href: `${base}img/favicon.ico`,
       },
     ],
-    // 百度统计：public/js/tongji.js，构建后每个 HTML 页面 head 中都会引入
+    // 百度统计：根目录 public/js/tongji.js，构建后每个 HTML 页面 head 中都会引入
     ['script', { src: `${base}js/tongji.js` }],
   ],
   themeConfig: {

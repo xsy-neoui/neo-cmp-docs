@@ -51,7 +51,7 @@ neo init -t vue2 -n myVue2Cmp
 | `neo create cmp` | 在当前项目中创建一个自定义组件 | `--name` 组件名，`--targetDevice` / `-d` 指定目标设备类型 |
 | `neo login` | 登录 NeoCRM（OAuth2） | `-e` / `--env` 环境类型 |
 | `neo logout` | 登出 NeoCRM | — |
-| `neo preview` | 本地预览，默认支持热更新与接口代理。若组件依赖 `neo-ui-common` 或 `neo-ui-component-web`，则不支持本地预览（这些模块是平台运行时注入的虚拟模块，本地环境无法提供，需使用 `neo linkDebug` 外链调试代替） | `--name` 指定组件名 |
+| `neo preview` | 预览自定义组件，支持在线预览（`online`，默认）与本地预览（`local`）。在线预览在 NeoCRM / 页面设计器环境中预览；本地预览使用本地开发服务器，支持热更新与接口代理。若组件依赖 Neo 平台运行时（如 `neo-ui-common`、`neo-ui-component-web` 等），则**只能使用在线预览**（`-m online`） | `-n` / `--name` 组件名，`-m` / `--mode` 预览模式（`online` / `local`，默认 `online`） |
 | `neo linkDebug` | 外链调试，在页面设计器中调试自定义组件 | `--platform` 调试设备类型，`--name` 组件名 |
 | `neo push cmp` | 构建并发布到 NeoCRM | `--name` 组件名 |
 | `neo pull cmp` | 从 NeoCRM 拉取线上组件到当前项目 | `--name` 组件名 |
@@ -159,7 +159,40 @@ module.exports = {
 - **自动注册**：发布时会生成注册相关文件并注入构建流程，一般无需手写注册代码（参见 [neo-register](https://www.npmjs.com/package/neo-register)）。
 - **样式隔离**：发布或 `linkDebug` 时会对组件样式做隔离处理（默认处理目录下 `(index|style).(scss|less)` 等），隔离方式为给样式增加作用域前缀（如 `[data-scope=组件目录名]`）。根节点请使用**与组件目录名一致**的类名（className），否则隔离策略会因作用域不匹配而导致样式失效。若需关闭，可在 `neo.config.js` 或 webpack 相关配置中将 `disableAutoAddStyleScope` 设为 `true`。
 
-### 2. 本地调试自定义组件
+### 2. 预览自定义组件
+
+`neo preview` 支持两种预览模式：
+
+- **在线预览（`online`，默认）**：在 NeoCRM / 页面设计器的在线环境中预览组件，可以访问 Neo 平台运行时、接口与上下文；推荐使用。
+- **本地预览（`local`）**：在本地开发服务器中预览组件（含热更新与接口代理），适合纯前端、不依赖平台运行时的场景。
+
+#### 用法
+
+```bash
+# 在线预览（默认）
+neo preview
+# 等价于
+neo preview -m online
+
+# 本地预览
+neo preview -m local
+
+# 指定组件名 + 预览模式
+neo preview -n xxCmp -m online
+neo preview -n xxCmp -m local
+```
+
+#### 参数说明
+
+- `-n` / `--name`：指定要预览的组件名；不传则交互选择或按默认规则处理。
+- `-m` / `--mode`：预览模式，可选 `online`（在线预览，默认）或 `local`（本地预览）。
+
+#### 注意事项
+
+- 当自定义组件依赖 Neo 平台运行时（如 `neo-ui-common`、`neo-ui-component-web` 等平台能力、接口或上下文）时，本地预览环境无法提供这些虚拟模块，**只能使用在线预览**（`neo preview -m online`）。
+- 若在线预览也不足以满足在设计器页面上下文中的验证需求，可配合 `neo linkDebug` 外链调试使用（见下文）。
+
+### 3. 本地调试自定义组件
 
 #### 步骤 1：启动外链调试
 
@@ -177,7 +210,7 @@ neo linkDebug
 
 在设计器左侧「外部链接」面板中，将上一步输出的脚本地址加入，即可在物料中看到对应自定义组件。
 
-### 3. 发布自定义组件至 NeoCRM
+### 4. 发布自定义组件至 NeoCRM
 
 执行 `neo push cmp` 会构建组件并将资源发布到 NeoCRM（含平台 CDN 流程，以实际环境为准）。
 
@@ -212,7 +245,7 @@ neo push cmp -n xxCmp
 
 发布成功后，可在对应租户下的页面设计器、表单设计器等环境中使用该组件。
 
-### 4. 拉取线上组件到本地
+### 5. 拉取线上组件到本地
 
 `neo pull cmp` 会从 NeoCRM 拉取组件源码到当前项目的 `src/components`。
 
@@ -226,7 +259,7 @@ neo pull cmp -n xxCmp
 
 **注意**：会覆盖本地同名目录；若有新依赖，拉取后按提示执行 `npm install` / `yarn install`；zip 等中间文件可能留在 `.neo-cli/zip-source`，可按需清理。
 
-### 5. 删除线上自定义组件
+### 6. 删除线上自定义组件
 
 `neo delete cmp` 会从 NeoCRM **删除**指定组件，删除后设计器中无法再选用（请谨慎操作）。
 
