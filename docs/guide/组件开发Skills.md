@@ -41,13 +41,7 @@ frontend-design (UI/UX 创意设计，可贯穿任何阶段)
 - **Cursor**
 - **Claude Code**
 
-> Windows 与 macOS 下 `~` 均指当前用户主目录（Windows 下对应 `C:\Users\<用户名>`、macOS 下对应 `/Users/<用户名>`），以上路径在两个平台均可直接使用。
-
 ## 安装技能包
-
-::: tip 前置条件
-安装技能包前，请确保已全局安装 `neo-cmp-cli`。如尚未安装，请参考 [安装](/guide/安装) 页面完成 CLI 的全局安装。
-:::
 
 ```bash
 # 交互选择目标产品
