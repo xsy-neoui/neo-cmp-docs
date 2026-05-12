@@ -41,8 +41,6 @@ frontend-design (UI/UX 创意设计，可贯穿任何阶段)
 - **Cursor**
 - **Claude Code**
 
-> Windows 与 macOS 下 `~` 均指当前用户主目录（Windows 下对应 `C:\Users\<用户名>`、macOS 下对应 `/Users/<用户名>`），以上路径在两个平台均可直接使用。
-
 ## 安装技能包
 
 ```bash
