@@ -45,6 +45,10 @@ frontend-design (UI/UX 创意设计，可贯穿任何阶段)
 
 ## 安装技能包
 
+::: tip 前置条件
+安装技能包前，请确保已全局安装 `neo-cmp-cli`。如尚未安装，请参考 [安装](/guide/安装) 页面完成 CLI 的全局安装。
+:::
+
 ```bash
 # 交互选择目标产品
 neo add cli-skills
