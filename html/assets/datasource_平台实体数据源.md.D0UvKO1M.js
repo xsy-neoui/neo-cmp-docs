@@ -84,7 +84,7 @@ import{_ as i,o as a,c as n,ah as t}from"./chunks/framework.DEbGi21A.js";const c
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// 方式一：对象参数</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> result</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> xObject.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">({</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  xObjectApiKey: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&#39;xxKey&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  xObjectId: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&#39;xxId&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  objectId: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&#39;xxId&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  option: {</span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">    // 其他请求选项</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
