@@ -45,7 +45,8 @@ export default defineConfig({
       },
       { text: '示例模板', link: '/示例模板' },
       { text: '案例展示', link: '/案例展示' },
-      { text: '组件开发 Skills', link: '/guide/组件开发Skills' },
+      { text: 'Neo 组件开发 Skills', link: '/guide/组件开发Skills' },
+      { text: 'Neo 开发助手 Skills', link: '/guide/devSkills' },
     ],
     sidebar: [
       {
