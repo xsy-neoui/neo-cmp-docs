@@ -6,14 +6,15 @@
 
 ## 什么是组件开发 Skills
 
-「组件开发 Skills」是一组面向 AI 编辑器的开发技能包，内容涵盖 Neo 自定义组件从命令行操作、React 组件开发、Vue 组件迁移 React 组件的开发指南 Skill 和开发规范，指导 AI 开发出更贴近 Neo 平台和业务需求的自定义组件。
+「组件开发 Skills」是一组面向 AI 编辑器（CodeBuddy、Kiro、Cursor等）的开发技能包，内容涵盖 Neo 自定义组件从命令行操作、React 组件开发、Vue 组件迁移 React 组件的开发指南 Skill 和开发规范，指导 AI 开发出更贴近 Neo 平台和业务需求的自定义组件。
 
-目前提供以下四个技能包：
+目前提供以下五个技能包：
 
 | Skill | 作用 |
 | --- | --- |
 | `neo-cmp-cli` | `neo` 命令行工具技能，负责项目创建 / 初始化、组件新增、发布 / 上传、预览、本地调试、外链调试、登录 / 登出等命令操作。遵循非交互式执行、镜像源配置、登录态预检等规范。 |
-| `neo-cmp-dev` | React 16 + TypeScript 自定义组件开发技能，覆盖组件目录结构、`model.ts` 模型、`propsSchema` 配置、事件动作（`@NeoEvent` + `BaseCmp`）、运行时上下文、平台预置组件、数据源、SCSS + BEM 样式隔离及工程规范。开发完成后可转交 `neo-cmp-cli` 技能执行预览 / 发布。 |
+| `neo-cmp-dev` | React 16 + TypeScript 自定义组件开发技能，覆盖组件目录结构、`model.ts` 模型、`propsSchema` 配置、事件动作（`@NeoEvent` + `BaseCmp`）、运行时上下文、平台预置组件、数据源、SCSS + BEM 样式隔离及工程规范。开发完成后可转交 `neo-code-review` 技能进行代码审查，通过后再转交 `neo-cmp-cli` 执行预览 / 发布。 |
+| `neo-code-review` | Neo 平台自定义组件代码审查与规范校验技能。对 `neo-cmp-dev` 开发的组件进行入口文件、模型文件、样式文件、事件动作声明、数据源使用方式、字段名合法性等的全面检查，输出整改清单后转交 `neo-cmp-dev` 修复，直至组件符合所有约束和规则。 |
 | `vue-to-react` | Vue 组件 / 项目迁移到 React 16 + TypeScript 的语法层技能。覆盖 SFC 拆分、模板转 JSX、响应式转 hooks、生命周期对照、通信机制、Vuex / Pinia 转 MobX、Vue Router 转 React Router、自定义指令 / mixin 转 hook / HOC 等。语法迁移完成后转交 `neo-cmp-dev` 做平台规范落地。 |
 | `frontend-design` | 前端创意设计技能，打造具有高设计品质的独特界面。负责选定美学方向（极简 / 极繁 / 复古等），关注字体排版、色彩主题、动效、空间构成和背景细节，避免通用的 AI 审美。 |
 
@@ -24,6 +25,9 @@ vue-to-react (Vue → React 语法迁移)
        │
        ▼
 neo-cmp-dev (平台规范落地)
+       │
+       ▼
+neo-code-review (代码审查与规范校验，发现问题后返回 neo-cmp-dev 修复)
        │
        ▼
 neo-cmp-cli (命令执行：创建、预览、发布)
@@ -61,6 +65,38 @@ neo add cli-skills -p claudeCode
 
 执行后，CLI 会将技能包安装到所选产品的 skill 目录下。若目标目录中已存在同名 skill，会以覆盖方式写入。
 
+### 支持手动下载和安装
+
+如果网络环境不佳（cli 安装慢）或 电脑上没有安装 Node 环境（安装 cli 依赖 Node 环境），也可通过下载技能包手动安装到 AI 编辑器（CodeBuddy、Kiro、Cursor等）中。
+
+#### 下载技能包
+
+- **点击下载**：[skills.zip](/skills.zip)。
+
+技能包内包含以下技能：
+
+| Skill | 作用 |
+| --- | --- |
+| `neo-cmp-cli` | `neo` 命令行工具技能 |
+| `neo-cmp-dev` | React 16 + TypeScript 自定义组件开发技能 |
+| `neo-code-review` | Neo 平台自定义组件代码审查与规范校验技能 |
+| `vue-to-react` | Vue 组件 / 项目迁移到 React 16 + TypeScript 的语法层技能 |
+| `frontend-design` | 前端创意设计技能 |
+
+#### 手动安装步骤
+
+根据你使用的 AI 编辑器，将 `skills.zip` 解压得到的 skill 添加导入到对应的 AI 编辑器（CodeBuddy、Kiro、Cursor等）即可。
+
+以 CodeBuddy 为例，skill 添加导入步骤如下： 
+
+1. 在「技能」页面，点击右上角的「+ 添加技能」按钮，选择「上传技能」；
+2. 选择 `skills.zip` 解压得到的 `neo-cmp-cli` 目录（skills/neo-cmp-cli），点击「确定」；
+3. 重复步骤 1、2 导入 `neo-cmp-dev`、`neo-code-review`、`vue-to-react`、`frontend-design` 四个 skill。
+
+::: tip 覆盖说明
+若目标目录中已有同名 skill，覆盖式写入即可。
+:::
+
 ## 更新技能包
 
 ```bash
@@ -87,6 +123,7 @@ neo remove cli-skills -p codebuddy
 
 - `neo-cmp-cli`
 - `neo-cmp-dev`
+- `neo-code-review`
 - `vue-to-react`
 - `frontend-design`
 
@@ -99,8 +136,8 @@ neo remove cli-skills -p codebuddy
 | 命令 | 说明 | 参数 |
 | --- | --- | --- |
 | `neo add cli-skills` | 安装「组件开发 Skills」到指定产品的 skill 目录（用户级） | `-p` / `--product` 目标产品（`codebuddy` / `kiro` / `cursor` / `claudeCode`） |
-| `neo update cli-skills` | 更新指定产品下的「组件开发 Skills」（覆盖式 copy `neo-cmp-cli` / `neo-cmp-dev` / `vue-to-react` / `frontend-design`） | `-p` / `--product` 目标产品 |
-| `neo remove cli-skills` | 移除指定产品下的「组件开发 Skills」（清理 `neo-cmp-cli` / `neo-cmp-dev` / `vue-to-react`） | `-p` / `--product` 目标产品 |
+| `neo update cli-skills` | 更新指定产品下的「组件开发 Skills」（覆盖式 copy `neo-cmp-cli` / `neo-cmp-dev` / `neo-code-review` / `vue-to-react` / `frontend-design`） | `-p` / `--product` 目标产品 |
+| `neo remove cli-skills` | 移除指定产品下的「组件开发 Skills」（清理 `neo-cmp-cli` / `neo-cmp-dev` / `neo-code-review` / `vue-to-react`） | `-p` / `--product` 目标产品 |
 
 ## 使用 Case
 
