@@ -1,12 +1,12 @@
-# 组件开发 Skills
+# Neo 组件开发 Skills
 
 ::: warning Beta 状态
-本「组件开发 Skills」目前处于 **Beta** 阶段，功能和使用方式仍在持续打磨中。试用过程中发现任何问题，或有改进建议，欢迎随时反馈到 [neo-cmp-docs Issues](https://github.com/xsy-neoui/neo-cmp-docs/issues)。
+本「Neo 组件开发 Skills」目前处于 **Beta** 阶段，功能和使用方式仍在持续打磨中。试用过程中发现任何问题，或有改进建议，欢迎随时反馈到 [neo-cmp-docs Issues](https://github.com/xsy-neoui/neo-cmp-docs/issues)。
 :::
 
-## 什么是组件开发 Skills
+## 什么是 Neo 组件开发 Skills
 
-「组件开发 Skills」是一组面向 AI 编辑器（CodeBuddy、Kiro、Cursor等）的开发技能包，内容涵盖 Neo 自定义组件从命令行操作、React 组件开发、Vue 组件迁移 React 组件的开发指南 Skill 和开发规范，指导 AI 开发出更贴近 Neo 平台和业务需求的自定义组件。
+「Neo 组件开发 Skills」是一组面向 AI 编辑器（CodeBuddy、Kiro、Cursor等）的开发技能包，内容涵盖 Neo 自定义组件从命令行操作、React 组件开发、Vue 组件迁移 React 组件的开发指南 Skill 和开发规范，指导 AI 开发出更贴近 Neo 平台和业务需求的自定义组件。
 
 目前提供以下五个技能包：
 
@@ -135,9 +135,9 @@ neo remove cli-skills -p codebuddy
 
 | 命令 | 说明 | 参数 |
 | --- | --- | --- |
-| `neo add cli-skills` | 安装「组件开发 Skills」到指定产品的 skill 目录（用户级） | `-p` / `--product` 目标产品（`codebuddy` / `kiro` / `cursor` / `claudeCode`） |
-| `neo update cli-skills` | 更新指定产品下的「组件开发 Skills」（覆盖式 copy `neo-cmp-cli` / `neo-cmp-dev` / `neo-code-review` / `vue-to-react` / `frontend-design`） | `-p` / `--product` 目标产品 |
-| `neo remove cli-skills` | 移除指定产品下的「组件开发 Skills」（清理 `neo-cmp-cli` / `neo-cmp-dev` / `neo-code-review` / `vue-to-react`） | `-p` / `--product` 目标产品 |
+| `neo add cli-skills` | 安装「Neo 组件开发 Skills」到指定产品的 skill 目录（用户级） | `-p` / `--product` 目标产品（`codebuddy` / `kiro` / `cursor` / `claudeCode`） |
+| `neo update cli-skills` | 更新指定产品下的「Neo 组件开发 Skills」（覆盖式 copy `neo-cmp-cli` / `neo-cmp-dev` / `neo-code-review` / `vue-to-react` / `frontend-design`） | `-p` / `--product` 目标产品 |
+| `neo remove cli-skills` | 移除指定产品下的「Neo 组件开发 Skills」（清理 `neo-cmp-cli` / `neo-cmp-dev` / `neo-code-review` / `vue-to-react`） | `-p` / `--product` 目标产品 |
 
 ## 使用 Case
 
@@ -209,7 +209,7 @@ CLI 自带的 `neo-custom-cmp-template` 模板中就有一个 `customApi__c` 组
 
 ## 使用反馈
 
-「组件开发 Skills」仍在 Beta 阶段，欢迎在实际开发中持续试用。如遇到以下任一场景，请在 [neo-cmp-docs Issues](https://github.com/xsy-neoui/neo-cmp-docs/issues) 提交反馈：
+「Neo 组件开发 Skills」仍在 Beta 阶段，欢迎在实际开发中持续试用。如遇到以下任一场景，请在 [neo-cmp-docs Issues](https://github.com/xsy-neoui/neo-cmp-docs/issues) 提交反馈：
 
 - AI 助手输出的代码不符合 Neo 自定义组件规范；
 - 某个技能包的指引与当前 CLI / 平台行为存在冲突；
