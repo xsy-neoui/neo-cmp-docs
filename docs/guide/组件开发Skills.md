@@ -153,7 +153,7 @@ neo remove cli-skills -p codebuddy
 AI 助手结合 `neo-cmp-dev` 技能，典型会这么做：
 
 1. 通过 `neo create cmp` 在 `src/components` 下生成组件目录（例如 `accountListCmp__c`）；
-2. 识别到「客户」对应 Neo 标准实体 `Account`，并提示通过 `xObject.getDesc('Account')` 或 `scripts/fetchEntityDesc.js` 查询 `Account` 的真实字段，避免杜撰字段名；
+2. 识别到「客户」对应 Neo 标准实体 `Account`，并提示通过 `xObject.getFileds('Account')` 或 `scripts/fetchEntityDesc.js` 查询 `Account` 的真实字段，避免杜撰字段名；
 3. 在 `propsSchema` 中暴露「要展示的字段」「每页条数」「是否展示操作列」等属性面板配置项，并默认选择 `name` / `customerType` / `phone` / `owner` 等已有字段；
 4. 在 `index.tsx` 中通过 `xObject.getData({ apiKey: 'Account', ... })` 拉取客户列表，使用平台预置的 PC 版列表组件或 antd `Table` 渲染；
 5. 为「行点击」定义事件动作（`@NeoEvent.click`），通过 `props.env.ctx` 打开标准的客户详情页（路由到 `Account` 实体详情），无需手写跳转 URL；
@@ -182,7 +182,7 @@ AI 助手结合 `neo-cmp-dev` 技能，相对 Case 1 的差异主要在：
 
 AI 助手结合 `neo-cmp-dev` 技能，典型会这么做：
 
-1. 识别到「商机」对应 Neo 标准实体 `Opportunity`，先查 `Opportunity` 已有字段列表（`xObject.getDesc` 或 `scripts/fetchEntityDesc.js`），在 `propsSchema` 中通过 `selectFieldsApi` 让业务方选要展示的字段；
+1. 识别到「商机」对应 Neo 标准实体 `Opportunity`，先查 `Opportunity` 已有字段列表（`xObject.getFileds` 或 `scripts/fetchEntityDesc.js`），在 `propsSchema` 中通过 `selectFieldsApi` 让业务方选要展示的字段；
 2. 在 `index.tsx` 中调用 `xObject.getData({ apiKey: 'Opportunity', pageSize, pageNum, ... })` 拉分页数据，并把分页状态（`pageNum` / `pageSize` / `total`）维护在组件 state 中；
 3. 「新增」按钮通过 `props.env.ctx` 打开 `Opportunity` 的新建表单页；「删除」按钮调用 `xObject.delete({ apiKey: 'Opportunity', ids: [...] })`，删除前使用 antd `Modal.confirm` 做二次确认；
 4. 新增 / 删除成功后，触发定义在 `model.ts` 中的组件事件（如 `onCreated` / `onDeleted`），便于其他组件联动；同时刷新当前分页的数据；
