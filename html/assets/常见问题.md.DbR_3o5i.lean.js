@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as e,ah as n}from"./chunks/framework.DEbGi21A.js";const c=JSON.parse('{"title":"常见问题","description":"","frontmatter":{},"headers":[],"relativePath":"常见问题.md","filePath":"常见问题.md"}'),t={name:"常见问题.md"};function l(o,s,h,r,p,k){return a(),e("div",null,[...s[0]||(s[0]=[n("",54)])])}const E=i(t,[["render",l]]);export{c as __pageData,E as default};
