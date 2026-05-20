@@ -8,7 +8,7 @@
 
 「Neo 组件开发 Skills」是一组面向 AI 编辑器（CodeBuddy、Kiro、Cursor等）的开发技能包，内容涵盖 Neo 自定义组件从命令行操作、React 组件开发、Vue 组件迁移 React 组件的开发指南 Skill 和开发规范，指导 AI 开发出更贴近 Neo 平台和业务需求的自定义组件。
 
-目前提供以下五个技能包：
+目前提供以下五个技能：
 
 | Skill | 作用 |
 | --- | --- |
@@ -145,7 +145,32 @@ neo remove cli-skills -p codebuddy
 
 以下是几个典型的使用 case，直接把「Prompt 示例」粘到 AI 对话框里就能跑：
 
-### Case 1：客户列表 + 点击查看详情（PC 端）
+### Case 1：商机指标分组面板（按阶段汇总 + 联动筛选）
+
+::: tip Prompt 示例
+开发一个商机指标分组面板自定义组件：
+1、组件分上下两部分展示，上面展示数值指标卡片，下面展示商机列表；
+2、数值指标卡片，根据商机数据按阶段 `saleStageId` 实体字段进行分组汇总，每个阶段的商机总条数使用一个指标卡片展示（上下结构，上面是数值，下面是商机阶段）；
+3、商机列表默认展示所有阶段的商机数据；
+4、点击数值指标卡片后，商机列表展示对应阶段的商机列表。
+:::
+
+<video controls width="100%" style="max-width: 800px; border-radius: 8px; margin-top: 8px;">
+  <source src="/video/neo-cmp-dev-skills.mp4" type="video/mp4" />
+  您的浏览器不支持视频播放，请下载后观看。
+</video>
+
+AI 助手结合 `neo-cmp-dev` 技能，典型会这么做：
+
+1. 识别到「商机」对应 Neo 标准实体 `Opportunity`，先通过 `xObject.getFileds('Opportunity')` 或 `scripts/fetchEntityDesc.js` 查询 `Opportunity` 的已有字段，重点关注 `saleStageId`（商机阶段字段，用于分组）、`name`（商机名称）、`amount`（金额）、`owner`（负责人）等字段；
+2. 在 `index.tsx` 中通过 `xObject.query({ xObjectApiKey: 'Opportunity', pageSize: 9999 })` 拉取全部商机数据（此处配合场景，数据量不大时可一次拉取），然后在组件内对数据按 `saleStageId` 做 **groupBy** 统计，计算出每个阶段下的商机条数；
+3. 数值指标卡片区域：遍历汇总结果，为每个阶段渲染一个指标卡片，卡片**上下结构**——上方用大号字体展示该阶段商机总数，下方展示商机阶段名称（可通过 `xObject.getFileds` 获取 `saleStageId` 的选项值字典进行中文映射）；
+4. 定义 `selectedStageId` 状态记录当前选中的阶段，指标卡片点击时更新该状态（点击「全部」或已选中卡片则重置为 `null`，恢复展示全部数据）；
+5. 商机列表区域：根据 `selectedStageId` 过滤数据——`null` 时展示全部商机，有值时展示对应阶段的商机列表；列表使用 antd `Table` / `List` 或平台预置列表组件渲染，展示商机名称、金额、负责人等关键字段；
+6. 选中的指标卡片应用高亮样式（如品牌色背景 + 白色文字），未选中的保持默认样式，形成清晰的视觉反馈；
+7. 所有状态和事件交互在组件内部闭环，不依赖外部状态管理；样式写在 `style.scss` 中，根节点 className 与组件目录名一致。
+
+### Case 2：客户列表 + 点击查看详情（PC 端）
 
 ::: tip Prompt 示例
 开发一个展示客户列表的自定义组件，支持点击某一行跳转到该客户的详情页。
@@ -156,26 +181,26 @@ AI 助手结合 `neo-cmp-dev` 技能，典型会这么做：
 1. 通过 `neo create cmp` 在 `src/components` 下生成组件目录（例如 `accountListCmp__c`）；
 2. 识别到「客户」对应 Neo 标准实体 `Account`，并提示通过 `xObject.getFileds('Account')` 或 `scripts/fetchEntityDesc.js` 查询 `Account` 的真实字段，避免杜撰字段名；
 3. 在 `propsSchema` 中暴露「要展示的字段」「每页条数」「是否展示操作列」等属性面板配置项，并默认选择 `name` / `customerType` / `phone` / `owner` 等已有字段；
-4. 在 `index.tsx` 中通过 `xObject.getData({ apiKey: 'Account', ... })` 拉取客户列表，使用平台预置的 PC 版列表组件或 antd `Table` 渲染；
+4. 在 `index.tsx` 中通过 `xObject.query({ xObjectApiKey: 'Account', ... })` 拉取客户列表，使用平台预置的 PC 版列表组件或 antd `Table` 渲染；
 5. 为「行点击」定义事件动作（`@NeoEvent.click`），通过 `props.env.ctx` 打开标准的客户详情页（路由到 `Account` 实体详情），无需手写跳转 URL；
 6. 样式写在 `style.scss` 中，根节点 className 与组件目录名保持一致，交由 CLI 做样式隔离。
 
 完成后，AI 助手会按 `neo-cmp-cli` 技能的约定提示：是否需要执行 `neo preview` 在线预览、`neo linkDebug` 外链调试，或 `neo push cmp` 发布到 NeoCRM。
 
-### Case 2：H5 版客户列表 + 点击查看详情
+### Case 3：H5 版客户列表 + 点击查看详情
 
 ::: tip Prompt 示例
 开发一个 H5 版的客户列表自定义组件，支持点击某一条查看客户详情，使用 H5 端常用的卡片 / 下拉刷新 + 触底加载样式。
 :::
 
-AI 助手结合 `neo-cmp-dev` 技能，相对 Case 1 的差异主要在：
+AI 助手结合 `neo-cmp-dev` 技能，相对 Case 2 的差异主要在：
 
 1. 在 `neo create cmp` 时通过 `-d` / `--targetDevice` 指定目标设备类型为 H5，或使用 `neo-h5-cmps` 模板起步（在首次初始化项目且用户明确需要 H5 模板时用 `neo init -t neo-h5-cmps`）；
 2. 优先使用平台预置的 **H5 版列表组件**（参见 [H5 版 列表组件使用说明](/cmpDocs/H5版列表组件使用说明)），接入 `Account` 实体数据源，直接获得下拉刷新、触底加载、卡片布局等能力；
 3. 「查看详情」通过 `props.env.ctx` 调用平台实体详情跳转能力，H5 端会自动走移动端详情页路由；
 4. 样式采用 SCSS + BEM，根节点 className 与组件目录名一致，保证 H5 端的样式隔离。
 
-### Case 3：商机列表 + 分页 + 新增 / 删除
+### Case 4：商机列表 + 分页 + 新增 / 删除
 
 ::: tip Prompt 示例
 开发一个展示商机列表的自定义组件：支持分页展示，支持新增商机和删除商机两种操作。
@@ -184,12 +209,12 @@ AI 助手结合 `neo-cmp-dev` 技能，相对 Case 1 的差异主要在：
 AI 助手结合 `neo-cmp-dev` 技能，典型会这么做：
 
 1. 识别到「商机」对应 Neo 标准实体 `Opportunity`，先查 `Opportunity` 已有字段列表（`xObject.getFileds` 或 `scripts/fetchEntityDesc.js`），在 `propsSchema` 中通过 `selectFieldsApi` 让业务方选要展示的字段；
-2. 在 `index.tsx` 中调用 `xObject.getData({ apiKey: 'Opportunity', pageSize, pageNum, ... })` 拉分页数据，并把分页状态（`pageNum` / `pageSize` / `total`）维护在组件 state 中；
-3. 「新增」按钮通过 `props.env.ctx` 打开 `Opportunity` 的新建表单页；「删除」按钮调用 `xObject.delete({ apiKey: 'Opportunity', ids: [...] })`，删除前使用 antd `Modal.confirm` 做二次确认；
+2. 在 `index.tsx` 中调用 `xObject.query({ xObjectApiKey: 'Opportunity', pageSize, page, ... })` 拉分页数据，并把分页状态（`page` / `pageSize` / `total`）维护在组件 state 中；
+3. 「新增」按钮通过 `props.env.ctx` 打开 `Opportunity` 的新建表单页；「删除」按钮调用 `xObject.delete('Opportunity', record.id)` 逐个删除，删除前使用 antd `Modal.confirm` 做二次确认；
 4. 新增 / 删除成功后，触发定义在 `model.ts` 中的组件事件（如 `onCreated` / `onDeleted`），便于其他组件联动；同时刷新当前分页的数据；
 5. 所有与平台交互的动作均用 `@NeoEvent.function` / `@NeoEvent.click` 装饰，确保属性面板「事件动作」可正确识别。
 
-### Case 4：基于 jsonplaceholder 的用户信息卡片列表
+### Case 5：基于 jsonplaceholder 的用户信息卡片列表
 
 ::: tip Prompt 示例
 使用 https://jsonplaceholder.typicode.com/users 接口，写一个展示用户信息的卡片列表自定义组件（卡片要包含姓名、邮箱、公司名、地址等字段）。

@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
+import { ref } from 'vue'
 import { withBase } from 'vitepress'
 
 interface CaseItem {
   title: string
   desc: string
-  gif: string
+  /** 视频路径（优先） */
+  video: string
+  /** 封面图路径（降级用） */
+  poster?: string
   template: string
 }
 
@@ -13,59 +16,66 @@ const cases: CaseItem[] = [
   {
     title: '案例一：H5 端自定义列表页',
     desc: '基于自定义组件快速搭建的 H5 端列表页面，支持全局搜索、打开AI对话框、分页加载列表数据等移动端交互。',
-    gif: withBase('/gif/H5列表页.gif'),
+    video: withBase('/video/NeoEntityList-demo.mp4'),
     template: 'neo init -t neo-h5-cmps -n myH5Cmps'
   },
   {
     title: '案例二：PC 端自定义列表页',
     desc: '使用平台预置列表组件 + 自定义组件（自定义查询条件）实现个性化的查询+数据列表展示。',
-    gif: withBase('/gif/基于平台列表实现的自定义列表页.gif'),
+    video: withBase('/video/EntityGrid-demo.mp4'),
     template: 'neo init -t neo-web-entity-grid -n myWebListCmp'
   },
   {
     title: '案例三：BI 数据页',
     desc: '基于自定义报表组件实现酷炫的BI数据大屏效果页',
-    gif: withBase('/gif/BI数据页.gif'),
+    video: withBase('/video/BI.mp4'),
     template: 'neo init -t neo-pipeline-zh-cmps -n pipelineCmps'
   },
   {
     title: '案例四：自定义表单页（新增业务数据）',
     desc: '通过自定义组件实现子表的批量数据插入与汇总统计功能。',
-    gif: withBase('/gif/自定义批量插入和自定义汇总.gif'),
+    video: withBase('/video/custom-form.mp4'),
     template: 'neo init -t neo-web-form -n myCustomForm'
   },
 ]
 
 /*
-针对竖向移动端长图，做了这些优化：
-思路
-问题成因：在很宽的弹窗里把图设成 width: 100%，竖长图会被横向上拉得很宽，按比例纵向上会特别长，中间滚动区虽能滚，但容易和头/底、移动浏览器 100vh 等叠在一起，看起来就像被挡、裁切、难扫完。
-限宽成「手机条」：根据图片 naturalHeight / naturalWidth ≥ 1.2 判为竖长图，对容器加 case-preview__img-wrap--tall：max-width: min(100%, 440px) 且居中（小屏 400px），不再在宽弹窗里横向拉满，总高度会按宽度等比变短，滚动量更合理。
-读图时机：@load + 切换用 :key + watch(activeIndex) 里对已缓存图片 complete 再量一次，避免不触发 load 时一直当成横图。
-
-其它
-支持 dvh 的浏览器用 @supports (height: 1dvh) 重算弹层高度，用 92dvh 与 100dvh - padding - safe-area，减轻移动 Safari 地址栏导致上下「少一截」 的感觉。
-≤640px 且为竖长图时：case-preview__inner--tall-asset 把头高 64→56、底高 88→76，并略减底部内边距，中间可滚区域更大，头尾不那么「压住」长图。
-横图/横屏大图不满足 1.2 的宽高比，不会加 --tall，仍按原来的全宽展示。若要改阈值或竖图最大宽（如固定 375 / 430），可以说一下我帮你调数值。
+之前组件使用 GIF 图片做案例展示，现已替换为 MP4 视频。
+竖向移动端录屏的长宽比依然用 tall-aspect 逻辑做限宽居中,
+视频通过 loadedmetadata 事件获取 videoWidth/videoHeight 判断。
 */
-
 const activeIndex = ref<number | null>(null)
-/** 竖长图（典型移动端 H5 录屏），用于限宽居中，避免在宽弹窗里被横向拉满后纵向过长、观感像被裁切/遮挡 */
+/** 竖长视频（典型移动端 H5 录屏），用于限宽居中 */
 const previewIsTall = ref(false)
-const previewImgRef = ref<HTMLImageElement | null>(null)
+const previewVideoRef = ref<HTMLVideoElement | null>(null)
+/** 卡片封面视频上记录宽高比，用于判断竖长视频 */
+const CARD_TALL_ATTR = 'data-is-tall'
 
 /** 高/宽 >= 1.2 视为竖长截图 */
 const TALL_ASPECT_THRESHOLD = 1.2
 
-function applyPreviewTallness(el: HTMLImageElement | null) {
-  if (!el || !el.naturalWidth || !el.naturalHeight) {
+function applyPreviewTallness(el: HTMLVideoElement | null) {
+  if (!el || !el.videoWidth || !el.videoHeight) {
     return
   }
-  previewIsTall.value = el.naturalHeight / el.naturalWidth >= TALL_ASPECT_THRESHOLD
+  previewIsTall.value = el.videoHeight / el.videoWidth >= TALL_ASPECT_THRESHOLD
 }
 
-function onPreviewImgLoad(e: Event) {
-  applyPreviewTallness(e.target as HTMLImageElement)
+function onPreviewVideoMeta(e: Event) {
+  applyPreviewTallness(e.target as HTMLVideoElement)
+}
+
+/** 卡片悬浮自动播放时，用 data 属性标记是否竖长，以便卡片 CSS 限宽 */
+function onCardVideoReady(e: Event) {
+  const v = e.target as HTMLVideoElement
+  if (v.videoWidth && v.videoHeight) {
+    const isTall = v.videoHeight / v.videoWidth >= TALL_ASPECT_THRESHOLD
+    if (isTall) {
+      v.setAttribute(CARD_TALL_ATTR, '')
+    } else {
+      v.removeAttribute(CARD_TALL_ATTR)
+    }
+  }
 }
 
 function openPreview(index: number) {
@@ -77,17 +87,6 @@ function closePreview() {
   activeIndex.value = null
   previewIsTall.value = false
 }
-
-watch(activeIndex, async () => {
-  if (activeIndex.value === null) {
-    return
-  }
-  await nextTick()
-  const el = previewImgRef.value
-  if (el?.complete) {
-    applyPreviewTallness(el)
-  }
-})
 </script>
 
 <template>
@@ -104,7 +103,16 @@ watch(activeIndex, async () => {
           @click="openPreview(index)"
         >
           <div class="case-card__cover">
-            <img :src="item.gif" :alt="item.title" loading="lazy" />
+            <video
+              :src="item.video"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              @mouseenter="($event.target as HTMLVideoElement)?.play()"
+              @mouseleave="($event.target as HTMLVideoElement)?.pause()"
+              @loadedmetadata="onCardVideoReady($event)"
+            ></video>
             <div class="case-card__overlay">
               <span class="case-card__play">▶ 点击预览</span>
             </div>
@@ -156,13 +164,19 @@ watch(activeIndex, async () => {
                 class="case-preview__img-wrap"
                 :class="{ 'case-preview__img-wrap--tall': previewIsTall }"
               >
-                <img
-                  ref="previewImgRef"
+                <video
+                  ref="previewVideoRef"
                   :key="`preview-${activeIndex}`"
-                  :src="cases[activeIndex].gif"
-                  :alt="cases[activeIndex].title"
-                  @load="onPreviewImgLoad"
-                />
+                  controls
+                  autoplay
+                  muted
+                  playsinline
+                  preload="metadata"
+                  :src="cases[activeIndex].video"
+                  @loadedmetadata="onPreviewVideoMeta"
+                >
+                  您的浏览器不支持视频播放
+                </video>
               </div>
             </div>
             <div class="case-preview__footer">
@@ -241,7 +255,8 @@ html.dark .case-card:hover {
   justify-content: center;
 }
 
-.case-card__cover img {
+.case-card__cover img,
+.case-card__cover video {
   width: 100%;
   height: auto;
   max-height: 360px;
@@ -250,7 +265,8 @@ html.dark .case-card:hover {
   transition: transform 0.3s;
 }
 
-.case-card:hover .case-card__cover img {
+.case-card:hover .case-card__cover img,
+.case-card:hover .case-card__cover video {
   transform: scale(1.03);
 }
 
@@ -432,7 +448,7 @@ html.dark .case-preview__inner {
   overflow: hidden;
 }
 
-/* 中间：GIF 可纵向滚动 */
+/* 中间：视频可纵向滚动 */
 .case-preview__scroll {
   flex: 1 1 0;
   min-height: 0;
@@ -466,11 +482,13 @@ html.dark .case-preview__inner {
   margin-right: auto;
 }
 
-.case-preview__img-wrap img {
+.case-preview__img-wrap img,
+.case-preview__img-wrap video {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
+  max-height: 80vh;
 }
 
 @supports (height: 1dvh) {
