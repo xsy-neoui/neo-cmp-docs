@@ -1,0 +1,1 @@
+import{c as e,Q as d,j as a,m as i}from"./chunks/framework.FxfNE4rv.js";const m=JSON.parse('{"title":"自定义组件模板列表","description":"","frontmatter":{},"headers":[],"relativePath":"示例模板.md","filePath":"示例模板.md"}'),s={name:"示例模板.md"};function c(o,t,n,l,h,r){return d(),a("div",null,[...t[0]||(t[0]=[i("",82)])])}const b=e(s,[["render",c]]);export{m as __pageData,b as default};
