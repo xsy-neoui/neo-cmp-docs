@@ -1,0 +1,1 @@
+import{c as a,Q as i,j as e,m as t}from"./chunks/framework.BPKcPtvA.js";const c=JSON.parse('{"title":"安装","description":"","frontmatter":{},"headers":[],"relativePath":"guide/安装.md","filePath":"guide/安装.md"}'),n={name:"guide/安装.md"};function l(p,s,h,r,o,k){return i(),e("div",null,[...s[0]||(s[0]=[t("",12)])])}const g=a(n,[["render",l]]);export{c as __pageData,g as default};

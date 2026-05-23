@@ -65,38 +65,6 @@ neo add cli-skills -p claudeCode
 
 执行后，CLI 会将技能包安装到所选产品的 skill 目录下。若目标目录中已存在同名 skill，会以覆盖方式写入。
 
-### 支持手动下载和安装
-
-如果网络环境不佳（cli 安装慢）或 电脑上没有安装 Node 环境（安装 cli 依赖 Node 环境），也可通过下载技能包手动安装到 AI 编辑器（CodeBuddy、Kiro、Cursor等）中。
-
-#### 下载技能包
-
-- **点击下载**：[skills.zip](/skills.zip)。
-
-技能包内包含以下技能：
-
-| Skill | 作用 |
-| --- | --- |
-| `neo-cmp-cli` | `neo` 命令行工具技能 |
-| `neo-cmp-dev` | React 16 + TypeScript 自定义组件开发技能 |
-| `neo-code-review` | Neo 平台自定义组件代码审查与规范校验技能 |
-| `vue-to-react` | Vue 组件 / 项目迁移到 React 16 + TypeScript 的语法层技能 |
-| `frontend-design` | 前端创意设计技能 |
-
-#### 手动安装步骤
-
-根据你使用的 AI 编辑器，将 `skills.zip` 解压得到的 skill 添加导入到对应的 AI 编辑器（CodeBuddy、Kiro、Cursor等）即可。
-
-以 CodeBuddy 为例，skill 添加导入步骤如下： 
-
-1. 在「技能」页面，点击右上角的「+ 添加技能」按钮，选择「上传技能」；
-2. 选择 `skills.zip` 解压得到的 `neo-cmp-cli` 目录（skills/neo-cmp-cli），点击「确定」；
-3. 重复步骤 1、2 导入 `neo-cmp-dev`、`neo-code-review`、`vue-to-react`、`frontend-design` 四个 skill。
-
-::: tip 覆盖说明
-若目标目录中已有同名 skill，覆盖式写入即可。
-:::
-
 ## 更新技能包
 
 ```bash
