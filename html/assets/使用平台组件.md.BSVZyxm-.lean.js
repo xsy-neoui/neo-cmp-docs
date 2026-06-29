@@ -1,1 +1,0 @@
-import{c as e,Q as o,j as d,m as r}from"./chunks/framework.BPKcPtvA.js";const m=JSON.parse('{"title":"使用平台组件","description":"","frontmatter":{},"headers":[],"relativePath":"使用平台组件.md","filePath":"使用平台组件.md"}'),n={name:"使用平台组件.md"};function c(a,t,s,i,l,h){return o(),d("div",null,[...t[0]||(t[0]=[r("",9)])])}const g=e(n,[["render",c]]);export{m as __pageData,g as default};
