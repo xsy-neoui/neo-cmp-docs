@@ -12,16 +12,18 @@
        默认橙色主题 Brand: #FF6B35
     ============================================ */
     :root {
-      /* ===== 品牌主色及其衍生变量 — HEX 主变量（5个）===== */
+      /* ===== 品牌主色及其衍生变量 — HEX 主变量（6个）===== */
       --brand-color: #FF6B35;
-      --brand-color-shade: #E65A25;
+      --brand-color-hover: #E55A20;
+      --brand-color-shade: #CC3600;
       --brand-color-tint: #FFF3EB;
       --brand-color-tint-light: #FFE4D5;
       --brand-color-disabled: #FFC8AE;
 
       /* ===== 品牌主色及其衍生 — -rgb 伴侣变量（纯数值，无 rgb() 包裹）===== */
       --brand-color-rgb: 255, 107, 53;
-      --brand-color-shade-rgb: 230, 90, 37;
+      --brand-color-hover-rgb: 229, 90, 32;
+      --brand-color-shade-rgb: 204, 54, 0;
       --brand-color-tint-rgb: 255, 243, 235;
       --brand-color-tint-light-rgb: 255, 228, 213;
       --brand-color-disabled-rgb: 255, 200, 174;
@@ -29,6 +31,8 @@
       /* ===== 语义化 Brand Token — Background（HEX 主变量 + -rgb 伴侣）===== */
       --color-bg-brand: var(--brand-color);
       --color-bg-brand-rgb: var(--brand-color-rgb);
+      --color-bg-brand-hover: var(--brand-color-hover);
+      --color-bg-brand-hover-rgb: var(--brand-color-hover-rgb);
       --color-bg-brand-shade: var(--brand-color-shade);
       --color-bg-brand-shade-rgb: var(--brand-color-shade-rgb);
       --color-bg-brand-tint: var(--brand-color-tint);
@@ -41,6 +45,8 @@
       /* ===== 语义化 Brand Token — Border（HEX 主变量 + -rgb 伴侣）===== */
       --color-border-brand: var(--brand-color);
       --color-border-brand-rgb: var(--brand-color-rgb);
+      --color-border-brand-hover: var(--brand-color-hover);
+      --color-border-brand-hover-rgb: var(--brand-color-hover-rgb);
       --color-border-brand-shade: var(--brand-color-shade);
       --color-border-brand-shade-rgb: var(--brand-color-shade-rgb);
       --color-border-brand-tint: var(--brand-color-tint);
@@ -53,6 +59,8 @@
       /* ===== 语义化 Brand Token — Icon（HEX 主变量 + -rgb 伴侣）===== */
       --color-icon-brand: var(--brand-color);
       --color-icon-brand-rgb: var(--brand-color-rgb);
+      --color-icon-brand-hover: var(--brand-color-hover);
+      --color-icon-brand-hover-rgb: var(--brand-color-hover-rgb);
       --color-icon-brand-shade: var(--brand-color-shade);
       --color-icon-brand-shade-rgb: var(--brand-color-shade-rgb);
       --color-icon-brand-tint: var(--brand-color-tint);
@@ -67,6 +75,8 @@
       /* ===== 语义化 Brand Token — Text / 文字链接（HEX 主变量 + -rgb 伴侣）===== */
       --color-text-brand: var(--brand-color);
       --color-text-brand-rgb: var(--brand-color-rgb);
+      --color-text-brand-hover: var(--brand-color-hover);
+      --color-text-brand-hover-rgb: var(--brand-color-hover-rgb);
       --color-text-brand-shade: var(--brand-color-shade);
       --color-text-brand-shade-rgb: var(--brand-color-shade-rgb);
       --color-text-brand-tint: var(--brand-color-tint);
@@ -78,59 +88,43 @@
       --color-text-brand-link: var(--brand-color-shade);
       --color-text-brand-link-rgb: var(--brand-color-shade-rgb);
 
-      /* ===== 按钮色变量（21个颜色变量 + 对应 -rgb 伴侣变量）===== */
+      /* ===== 按钮色变量（8个颜色变量 + 5个 -rgb 伴侣变量）===== */
+      /* ★ 说明：--color-button-filled-primary-* 用于实心底色按钮背景色，              */
+      /*   同时可复用于白色背景按钮的 border 边框、outline 描边、text 文字的颜色。          */
+      /*   即 fill / border / outline / text 四种按钮形态共用这一套变量。                  */
       /* Filled Primary - Background (hex + -rgb) */
-      --color-button-filled-primary-bg: #FF6B35;
-      --color-button-filled-primary-bg-rgb: 255, 107, 53;
-      --color-button-filled-primary-bg-hover: #E55A20;
-      --color-button-filled-primary-bg-hover-rgb: 229, 90, 32;
-      --color-button-filled-primary-bg-active: #E65A25;
-      --color-button-filled-primary-bg-active-rgb: 230, 90, 37;
-      --color-button-filled-primary-bg-tint: #FFF3EB;
-      --color-button-filled-primary-bg-tint-rgb: 255, 243, 235;
-      --color-button-filled-primary-bg-disabled: #FFC8AE;
-      --color-button-filled-primary-bg-disabled-rgb: 255, 200, 174;
+      --color-button-filled-primary: #FF6B35;
+      --color-button-filled-primary-rgb: 255, 107, 53;
+      --color-button-filled-primary-hover: #E55A20;
+      --color-button-filled-primary-hover-rgb: 229, 90, 32;
+      --color-button-filled-primary-active: #CC3600;
+      --color-button-filled-primary-active-rgb: 204, 54, 0;
+      --color-button-filled-primary-tint: #FFF3EB;
+      --color-button-filled-primary-tint-rgb: 255, 243, 235;
+      --color-button-filled-primary-disabled: #FFC8AE;
+      --color-button-filled-primary-disabled-rgb: 255, 200, 174;
       /* Filled Primary - Text Color (固定色，无需 -rgb) */
       --color-button-filled-primary-color: #ffffff;
       --color-button-filled-primary-color-hover: #ffffff;
       --color-button-filled-primary-color-disabled: #999999;
-      /* Filled Primary - Border (transparent 无需 -rgb) */
-      --color-button-filled-primary-border: transparent;
-      --color-button-filled-primary-border-hover: transparent;
 
-      /* Outline Primary (hex + -rgb) */
-      --color-button-outline-primary-color: #FF6B35;
-      --color-button-outline-primary-color-rgb: 255, 107, 53;
-      --color-button-outline-primary-color-hover: #E55A20;
-      --color-button-outline-primary-color-hover-rgb: 229, 90, 32;
-      --color-button-outline-primary-border: #FF6B35;
-      --color-button-outline-primary-border-rgb: 255, 107, 53;
-      --color-button-outline-primary-border-hover: #E55A20;
-      --color-button-outline-primary-border-hover-rgb: 229, 90, 32;
-      --color-button-outline-primary-bg: transparent;
-      --color-button-outline-primary-bg-hover: #FF6B35;
-      --color-button-outline-primary-bg-hover-rgb: 255, 107, 53;
-
-      /* Text / Link Button (hex + -rgb) */
-      --color-button-text-primary-color: #FF6B35;
-      --color-button-text-primary-color-rgb: 255, 107, 53;
-      --color-button-text-primary-color-hover: #E55A20;
-      --color-button-text-primary-color-hover-rgb: 229, 90, 32;
-      --color-button-text-primary-bg: transparent;
-      --color-button-text-primary-bg-hover: #FF6B35;
-      --color-button-text-primary-bg-hover-rgb: 255, 107, 53;
-
-      /* ===== 导航栏变量（10个 + -rgb 伴侣变量，默认根据品牌色自动识别）===== */
+      /* ===== 导航栏变量（17个 + -rgb 伴侣，默认根据品牌色自动识别）===== */
       --brand-nav-header-bg: #282E65;
       --brand-nav-header-bg-rgb: 40, 46, 101;
       --brand-nav-header-font: #ffffff;
+      --brand-nav-header-font-rgb: 255, 255, 255;
+      --brand-nav-header-font-hover: rgba(255, 255, 255, 0.85);
+      --brand-nav-header-font-hover-rgb: 255, 255, 255;
       --brand-nav-header-icon: #ffffff;
-      --brand-nav-header-launcher-icon: #ffffff;
-      --brand-nav-header-select: #282E65;
-      --brand-nav-header-select-rgb: 40, 46, 101;
+      --brand-nav-header-icon-rgb: 255, 255, 255;
+      --brand-nav-header-icon-hover: rgba(255, 255, 255, 0.85);
+      --brand-nav-header-icon-hover-rgb: 255, 255, 255;
+      --brand-nav-header-launcher-icon: var(--brand-color);
+      --brand-nav-header-launcher-icon-rgb: var(--brand-color-rgb);
+      --brand-nav-header-select: var(--brand-color-shade);
       --brand-nav-header-select-bg: rgba(255, 255, 255, 0.20);
-      --brand-nav-header-back-opacity: rgba(255, 255, 255, 0.20);
-      --brand-nav-header-back-hover: rgba(255, 255, 255, 0.30);
+      --brand-nav-header-elem-opacity: rgba(60, 80, 224, 0.08);
+      --brand-nav-header-elem-hover: rgba(60, 80, 224, 0.12);
       --brand-nav-header-placeholder: rgba(255, 255, 255, 0.70);
 
       /* ===== 中性色（辅助） ===== */
@@ -187,17 +181,17 @@
     .demo-navbar-back {
       width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: all var(--transition-fast);
-      background: var(--brand-nav-header-back-opacity); color: var(--brand-nav-header-icon);
+      background: var(--brand-nav-header-elem-opacity); color: var(--brand-nav-header-icon);
     }
-    .demo-navbar-back:hover { background: var(--brand-nav-header-back-hover); transform: scale(1.05); }
+    .demo-navbar-back:hover { background: var(--brand-nav-header-elem-hover); color: var(--brand-nav-header-font-hover); transform: scale(1.05); }
     .demo-navbar-title { font-size: 17px; font-weight: 600; letter-spacing: 0.01em; }
     .demo-navbar-right { display: flex; align-items: center; gap: 12px; }
     .demo-navbar-icon {
       width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      background: var(--brand-nav-header-back-opacity); color: var(--brand-nav-header-launcher-icon);
+      background: var(--brand-nav-header-elem-opacity); color: var(--brand-nav-header-launcher-icon);
       cursor: pointer; transition: all var(--transition-fast); font-size: 15px;
     }
-    .demo-navbar-icon:hover { background: var(--brand-nav-header-back-hover); transform: scale(1.05); }
+    .demo-navbar-icon:hover { background: var(--brand-nav-header-elem-hover); color: var(--brand-nav-header-icon-hover); transform: scale(1.05); }
 
     /* ========== 头部区域 ========== */
     .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; gap: 24px; flex-wrap: wrap; }
@@ -277,12 +271,19 @@
     .bg-demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .bg-swatch { padding: 20px 16px; border-radius: var(--radius-md); text-align: center; transition: all var(--transition-base); cursor: default; border: 1px solid transparent; }
     .bg-swatch:hover { transform: scale(1.02); border-color: var(--color-border); }
+    .bg-swatch--hoverable { position: relative; }
+    .bg-swatch--hoverable::after { content: 'Hover'; position: absolute; bottom: 6px; right: 8px; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; opacity: 0; transition: opacity var(--transition-fast); pointer-events: none; }
+    .bg-swatch--hoverable:hover::after { opacity: 1; }
+    .bg-swatch--hoverable:hover { background: var(--color-bg-brand-hover) !important; color: #ffffff !important; border-color: var(--color-bg-brand-hover) !important; box-shadow: 0 4px 16px rgba(var(--color-bg-brand-hover-rgb), 0.3); }
     .bg-swatch__label { font-size: 11px; font-weight: 600; color: inherit; margin-top: 8px; opacity: 0.85; }
     .bg-swatch__var { font-family: 'SF Mono', Monaco, monospace; font-size: 9px; opacity: 0.6; margin-top: 3px; }
 
     /* ========== 元素展示：边框 Border ========== */
-    .border-demo-item { padding: 14px 16px; border-radius: var(--radius-md); border: 2px solid var(--color-border-brand); background: var(--color-bg-default); margin-bottom: 10px; transition: all var(--transition-base); }
-    .border-demo-item:hover { border-color: var(--brand-color-shade); box-shadow: 0 0 0 3px var(--color-bg-brand-tint); }
+    .border-demo-item { padding: 14px 16px; border-radius: var(--radius-md); border: 2px solid var(--color-border-brand); background: var(--color-bg-default); margin-bottom: 10px; transition: all var(--transition-base); position: relative; }
+    .border-demo-item::before { content: ''; position: absolute; inset: -3px; border-radius: calc(var(--radius-md) + 3px); border: 2px solid transparent; transition: border-color var(--transition-fast); pointer-events: none; }
+    .border-demo-item:hover { border-color: var(--color-border-brand-hover) !important; box-shadow: 0 0 0 4px rgba(var(--color-border-brand-hover-rgb), 0.12), 0 2px 8px rgba(var(--color-border-brand-hover-rgb), 0.08); transform: translateX(4px); }
+    .border-demo-item:hover .border-demo-label { color: var(--color-text-brand-hover); font-weight: 700; }
+    .border-demo-item:hover .border-demo-var { color: var(--color-border-brand-hover); }
     .border-demo-item:last-child { margin-bottom: 0; }
     .border-demo-label { font-size: 12px; font-weight: 600; color: var(--color-text-secondary); }
     .border-demo-var { font-size: 10px; color: var(--color-text-muted); font-family: 'SF Mono', Monaco, monospace; margin-top: 2px; }
@@ -293,13 +294,19 @@
       width: 52px; height: 52px; border-radius: var(--radius-md);
       display: flex; align-items: center; justify-content: center;
       font-size: 22px; transition: all var(--transition-base); cursor: pointer;
-      border: 1px solid var(--color-border);
+      border: 1px solid var(--color-border); position: relative;
     }
+    .icon-box::after { content: 'hover'; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%) scale(0.8); font-size: 8px; font-weight: 600; color: var(--color-text-muted); opacity: 0; transition: all var(--transition-fast); white-space: nowrap; pointer-events: none; }
+    .icon-box:hover::after { opacity: 1; transform: translateX(-50%) scale(1); color: var(--color-icon-brand-hover); }
     .icon-box:hover { transform: scale(1.08) rotate(-3deg); }
     .icon-box--solid { background: var(--color-icon-brand); color: white; }
+    .icon-box--solid:hover { background: var(--color-icon-brand-hover) !important; box-shadow: 0 4px 12px rgba(var(--color-icon-brand-hover-rgb), 0.35); }
     .icon-box--tint { background: var(--color-icon-brand-tint); color: var(--color-icon-brand); border-color: var(--color-border-brand-tint); }
-    .icon-box--outline { background: transparent; color: var(--color-icon-brand); border-color: var(--color-border-brand); }
+    .icon-box--tint:hover { color: var(--color-icon-brand-hover) !important; border-color: var(--color-icon-brand-hover) !important; background: var(--color-bg-brand-tint-light) !important; box-shadow: 0 2px 8px rgba(var(--color-icon-brand-hover-rgb), 0.12); }
+    .icon-box--outline { background: transparent; color: var(--color-icon-brand); border-color: var(--color-border-brand); border-width: 2px; }
+    .icon-box--outline:hover { color: var(--color-icon-brand-hover) !important; border-color: var(--color-icon-brand-hover) !important; background: rgba(var(--color-icon-brand-hover-rgb), 0.06); }
     .icon-box--fill-link { background: transparent; color: var(--color-icon-fill-brand-link); border: none; }
+    .icon-box--fill-link:hover { color: var(--color-icon-brand-hover) !important; transform: scale(1.15) rotate(5deg); }
     .icon-box--disabled { color: var(--color-icon-brand-disabled); border-color: var(--color-border-brand-disabled); }
     .icon-legend { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
     .icon-legend-item { font-size: 11px; color: var(--color-text-muted); display: flex; align-items: center; gap: 6px; }
@@ -307,11 +314,17 @@
 
     /* ========== 元素展示：文本 Text ========== */
     .text-demo-stack { display: flex; flex-direction: column; gap: 10px; }
-    .text-line { padding: 12px 16px; border-radius: var(--radius-md); transition: all var(--transition-base); }
-    .text-line--primary { color: var(--color-text-brand); font-weight: 700; font-size: 18px; }
+    .text-line { padding: 12px 16px; border-radius: var(--radius-md); transition: all var(--transition-base); cursor: default; position: relative; border-left: 3px solid transparent; }
+    .text-line:hover { transform: translateX(4px); }
+    .text-line--primary { color: var(--color-text-brand); font-weight: 700; font-size: 18px; border-left-color: var(--color-text-brand); }
+    .text-line--primary:hover { color: var(--color-text-brand-hover) !important; background: linear-gradient(to right, var(--color-bg-brand-tint), transparent); border-left-color: var(--color-text-brand-hover) !important; box-shadow: 2px 0 8px rgba(var(--color-text-brand-rgb), 0.08); }
     .text-line--shade { color: var(--color-text-brand-shade); font-weight: 600; font-size: 15px; }
+    .text-line--shade:hover { color: var(--color-text-brand-hover) !important; background: var(--color-bg-brand-tint-light); border-left-color: var(--color-text-brand-hover) !important; }
     .text-line--tint-bg { background: var(--color-text-brand-tint); color: var(--color-text-brand); border-radius: var(--radius-md); font-weight: 600; font-size: 13px; }
-    .text-line--disabled { color: var(--color-text-brand-disabled); font-size: 14px; }
+    .text-line--tint-bg:hover { color: var(--color-text-brand-hover) !important; background: var(--color-bg-brand-tint-light); box-shadow: 0 2px 8px rgba(var(--color-text-brand-hover-rgb), 0.1); }
+    .text-line--disabled { color: var(--color-text-brand-disabled); font-size: 14px; cursor: not-allowed; }
+    .text-var-name { font-size: 10px; font-family: 'SF Mono', Monaco, monospace; color: var(--color-text-muted); margin-left: 6px; transition: color var(--transition-fast); }
+    .text-line:hover .text-var-name { color: var(--color-text-brand-hover); }
     .text-var-name { font-size: 10px; font-family: 'SF Mono', Monaco, monospace; color: var(--color-text-muted); margin-left: 6px; }
 
     /* ========== 元素展示：按钮 Button ========== */
@@ -324,31 +337,33 @@
       white-space: nowrap;
     }
     .demo-btn--filled-primary {
-      background: var(--color-button-filled-primary-bg);
+      background: var(--color-button-filled-primary);
       color: var(--color-button-filled-primary-color);
-      border: 1px solid var(--color-button-filled-primary-border);
     }
-    .demo-btn--filled-primary:hover { background: var(--color-button-filled-primary-bg-hover); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(var(--color-button-filled-primary-bg-rgb), 0.25); }
-    .demo-btn--filled-primary:active { background: var(--color-button-filled-primary-bg-active); }
-    .demo-btn--filled-primary.disabled, .demo-btn--filled-primary:disabled { background: var(--color-button-filled-primary-bg-disabled); color: var(--color-button-filled-primary-color-disabled); cursor: not-allowed; transform: none; box-shadow: none; }
-    .demo-btn--outline-primary { background: var(--color-button-outline-primary-bg); color: var(--color-button-outline-primary-color); border: 2px solid var(--color-button-outline-primary-border); }
-    .demo-btn--outline-primary:hover { background: rgba(var(--color-button-outline-primary-bg-hover-rgb), 0.08); border-color: var(--color-button-outline-primary-border-hover); color: var(--color-button-outline-primary-color-hover); }
-    .demo-btn--text-primary { background: var(--color-button-text-primary-bg); color: var(--color-button-text-primary-color); border: 1px solid transparent; padding: 10px 14px; }
-    .demo-btn--text-primary:hover { background: rgba(var(--color-button-text-primary-bg-hover-rgb), 0.08); color: var(--color-button-text-primary-color-hover); }
+    .demo-btn--filled-primary:hover { background: var(--color-button-filled-primary-hover); color: var(--color-button-filled-primary-color-hover); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(var(--color-button-filled-primary-rgb), 0.25); }
+    .demo-btn--filled-primary:active { background: var(--color-button-filled-primary-active); }
+    .demo-btn--filled-primary.disabled, .demo-btn--filled-primary:disabled { background: var(--color-button-filled-primary-disabled); color: var(--color-button-filled-primary-color-disabled); cursor: not-allowed; transform: none; box-shadow: none; }
+    .demo-btn--outline-primary { background: transparent; color: var(--color-button-filled-primary); border: 2px solid var(--color-button-filled-primary); }
+    .demo-btn--outline-primary:hover { background: rgba(var(--color-button-filled-primary-rgb), 0.08); border-color: var(--color-button-filled-primary-hover); color: var(--color-button-filled-primary-hover); }
+    .demo-btn--text-primary { background: transparent; color: var(--color-button-filled-primary); border: 1px solid transparent; padding: 10px 14px; }
+    .demo-btn--text-primary:hover { background: rgba(var(--color-button-filled-primary-rgb), 0.08); color: var(--color-button-filled-primary-hover); }
     .btn-group-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); margin-bottom: 4px; }
 
     /* ========== 元素展示：文字链接 Link ========== */
     .link-demo-list { display: flex; flex-direction: column; gap: 8px; }
     .link-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid transparent; transition: all var(--transition-fast); cursor: pointer; }
     .link-item:hover { background: var(--color-bg-brand-tint); border-color: var(--color-border-brand-tint); }
+    .link-item:hover .link-item__text { color: var(--color-text-brand-hover); }
     .link-item__text { font-size: 13px; font-weight: 500; color: var(--color-text-brand-link); }
     .link-item__arrow { color: var(--color-text-muted); font-size: 14px; transition: transform var(--transition-fast); }
-    .link-item:hover .link-item__arrow { transform: translateX(4px); color: var(--brand-color); }
+    .link-item:hover .link-item__arrow { transform: translateX(4px); color: var(--color-icon-brand-hover); }
 
     /* ========== 综合数据卡 ========== */
     .stats-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .stat-card { padding: 16px 14px; border-radius: var(--radius-md); text-align: center; background: var(--color-bg-brand-tint); border: 1px solid var(--color-border-brand-tint); transition: all var(--transition-base); }
-    .stat-card:hover { transform: scale(1.03); background: var(--color-bg-brand-tint-light); }
+    .stat-card:hover { transform: scale(1.03); background: var(--color-bg-brand-hover); }
+    .stat-card:hover .stat-value { color: #ffffff; }
+    .stat-card:hover .stat-label { color: rgba(255,255,255,0.75); }
     .stat-value { font-family: 'Space Grotesk', monospace; font-size: 24px; font-weight: 700; color: var(--color-text-brand); line-height: 1; }
     .stat-label { font-size: 11px; font-weight: 500; color: var(--color-text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
     .stat-change { display: inline-flex; align-items: center; gap: 3px; margin-top: 6px; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
@@ -392,11 +407,12 @@
     .vars-table tr.row-companion:hover td { background: rgba(var(--brand-color-rgb), 0.06); }
     .var-swatch-cell { width: 28px; height: 28px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 1px 4px rgba(0,0,0,0.1); flex-shrink: 0; }
     .var-swatch-cell.rgb-var { width: 28px; height: 28px; border-radius: 6px; border: 2px dashed var(--color-border-brand-tint); display: flex; align-items: center; justify-content: center; font-size: 8px; color: var(--color-text-muted); background: var(--color-bg-brand-tint); flex-shrink: 0; }
-    .var-name-cell { color: var(--color-text-brand); font-weight: 600; min-width: 280px; }
+    .var-name-cell { color: #1e1e1e; font-weight: 600; min-width: 280px; }
     .var-name-cell.var-companion { color: var(--color-text-muted); font-style: italic; font-weight: 400; padding-left: 18px; position: relative; }
     .var-name-cell.var-companion::before { content: '↳'; position: absolute; left: 4px; color: var(--brand-color); font-style: normal; font-weight: 700; }
     .var-value-cell { color: var(--color-text-muted); }
     .var-value-cell.value-rgb { color: var(--color-text-brand-shade); font-weight: 500; }
+    .var-desc-cell { color: var(--color-text-secondary); font-size: 12px; max-width: 260px; }
 
     .footer { text-align: center; padding: 32px 0 16px; color: var(--color-text-muted); font-size: 12px; }
     .footer a { color: var(--brand-color); text-decoration: none; font-weight: 500; }
@@ -430,7 +446,7 @@
     <!-- ========== 头部 ========== -->
     <header class="header">
       <div class="header-left">
-        <h1 class="header-title">Neo 平台主题换肤系统 示例</h1>
+        <h1 class="header-title">Neo 平台主题换肤系统</h1>
         <p>品牌 / 按钮 / 导航 三色独立体系 · HEX 主变量 + -RGB 伴侣变量 · TokenHelper API</p>
       </div>
       <div class="header-controls">
@@ -438,10 +454,30 @@
       </div>
     </header>
 
-    <!-- ========== 控制面板：品牌色 + 按钮色 + 导航栏（单行布局）========== -->
+    <!-- ========== 控制面板：导航栏 + 品牌色 + 按钮色（三行独立布局）========== -->
     <div class="control-panel">
 
-      <!-- 第一行：品牌色 -->
+      <!-- 第一行：导航栏 -->
+      <div class="control-row">
+        <div class="control-group">
+          <span class="control-label">导航栏</span>
+          <button class="theme-btn" id="navColorOrange" onclick="setNavColor('#FF6B35')" style="--btn-color:#FF6B35;--btn-rgb:255,107,53"><span class="theme-btn__dot"></span>橙</button>
+          <button class="theme-btn active" id="navColorBlue" onclick="setNavColor('#2563EB')" style="--btn-color:#2563EB;--btn-rgb:37,99,235"><span class="theme-btn__dot"></span>蓝</button>
+          <button class="theme-btn" id="navColorGreen" onclick="setNavColor('#16A34A')" style="--btn-color:#16A34A;--btn-rgb:22,163,74"><span class="theme-btn__dot"></span>绿</button>
+          <button class="theme-btn" id="navColorPurple" onclick="setNavColor('#7C3AED')" style="--btn-color:#7C3AED;--btn-rgb:124,58,237"><span class="theme-btn__dot"></span>紫</button>
+          <button class="theme-btn" id="navColorRed" onclick="setNavColor('#DC2626')" style="--btn-color:#DC2626;--btn-rgb:220,38,38"><span class="theme-btn__dot"></span>红</button>
+          <div class="color-picker-wrapper">
+            <input type="color" id="customNavColor" value="#2563EB" class="color-picker-input" onchange="setNavColor(this.value)">
+            <span class="color-hex-display" id="customNavHex">#2563EB</span>
+          </div>
+          <span class="nav-mode-indicator nav-mode-indicator--dark" id="navModeIndicator">
+            <span id="navModeIcon">🌙</span>
+            <span id="navModeText">自动·深色</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 第二行：品牌色 -->
       <div class="control-row">
         <div class="control-group">
           <span class="control-label">品牌色</span>
@@ -454,11 +490,15 @@
             <input type="color" id="customBrandColor" value="#FF6B35" class="color-picker-input" onchange="setCustomBrandColor(this.value)">
             <span class="color-hex-display" id="customBrandHex">#FF6B35</span>
           </div>
+          <span class="nav-mode-indicator nav-mode-indicator--dark" id="brandModeIndicator">
+            <span id="brandModeIcon">🌙</span>
+            <span id="brandModeText">自动·深色</span>
+          </span>
         </div>
+      </div>
 
-        <div style="width:1px;height:24px;background:var(--color-divider);flex-shrink:0;"></div>
-
-        <!-- 按钮色 -->
+      <!-- 第三行：按钮色 -->
+      <div class="control-row">
         <div class="control-group">
           <span class="control-label">按钮色</span>
           <button class="theme-btn active" id="btnColorFollow" onclick="setButtonColor('follow')" style="--btn-color:var(--brand-color);--btn-rgb:inherit"><span class="theme-btn__dot" id="btnFollowDot"></span>跟随品牌</button>
@@ -469,18 +509,8 @@
             <span class="color-hex-display" id="customBtnHex">#FF6B35</span>
           </div>
         </div>
-
-        <div style="width:1px;height:24px;background:var(--color-divider);flex-shrink:0;"></div>
-
-        <!-- 导航栏（自动识别显示） -->
-        <div class="control-group">
-          <span class="control-label">导航栏</span>
-          <span class="nav-mode-indicator nav-mode-indicator--dark" id="navModeIndicator">
-            <span id="navModeIcon">🌙</span>
-            <span id="navModeText">自动·深色</span>
-          </span>
-        </div>
       </div>
+
     </div>
 
     <!-- ========== 六大元素类型展示区 ========== -->
@@ -494,26 +524,24 @@
 
         <!-- 卡片1: 按钮 Button -->
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-icon">⚡</span>按钮 Button</div><span class="card-tag">21个变量</span></div>
+          <div class="card-header"><div class="card-title"><span class="card-icon">⚡</span>按钮 Button</div><span class="card-tag">8+5个变量</span></div>
           <div class="card-body button-demo-area">
-            <div class="btn-group-label">Filled Primary（--color-button-filled-primary-*）</div>
+            <div class="btn-group-label">Filled Primary（hover 使用 --color-button-filled-primary-hover + --color-button-filled-primary-color-hover）</div>
             <div class="button-row">
               <button class="demo-btn demo-btn--filled-primary">主要操作</button>
               <button class="demo-btn demo-btn--filled-primary disabled" disabled>禁用状态</button>
             </div>
-            <div class="btn-group-label">Outline Primary（★ hover 用 rgba(var(--xxx-rgb), 0.08)）</div>
+            <div class="btn-group-label">Outline（★ 文字/边框复用 --color-button-filled-primary）</div>
             <div class="button-row">
               <button class="demo-btn demo-btn--outline-primary">轮廓按钮</button>
               <button class="demo-btn demo-btn--outline-primary">带图标 →</button>
             </div>
-            <div class="btn-group-label">Text Button（★ hover 用 rgba(var(--xxx-rgb), 0.08)）</div>
+            <div class="btn-group-label">Text Button（★ 文字复用 --color-button-filled-primary）</div>
             <div class="button-row">
               <button class="demo-btn demo-btn--text-primary">文字按钮</button>
             </div>
             <div style="margin-top:8px;font-size:10px;color:var(--color-text-muted);">
-              覆盖变量：<code>--color-button-filled-primary-bg/color/border</code> · 
-              <code>--color-button-outline-primary-*</code> · 
-              <code>--color-button-text-primary-*</code>
+              覆盖变量：<code>--color-button-filled-primary-*</code>（一套变量覆盖 fill / border / outline / text 四种形态）
             </div>
           </div>
         </div>
@@ -528,17 +556,17 @@
             <div class="link-item"><span class="link-item__text">删除此记录</span><span class="link-item__arrow">›</span></div>
             <div class="link-item"><span class="link-item__text" style="color:var(--color-text-brand)">品牌色链接（--color-text-brand）</span><span class="link-item__arrow">›</span></div>
             <div style="font-size:10px;color:var(--color-text-muted);margin-top:8px;">
-              变量：<code>--color-text-brand-link</code>(hover) · <code>--color-text-brand</code>(正常)
+              Hover 变量：<code>--color-text-brand-link</code>(正常) → hover 文字: <code>--color-text-brand-hover</code> · hover 背景: <code>--color-bg-brand-tint</code> · hover 箭头: <code>--color-icon-brand-hover</code>
             </div>
           </div>
         </div>
 
         <!-- 卡片3: 背景 Background -->
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-icon">🎨</span>背景 Background</div><span class="card-tag">6个变量</span></div>
+          <div class="card-header"><div class="card-title"><span class="card-icon">🎨</span>背景 Background</div><span class="card-tag">7个变量</span></div>
           <div class="card-body bg-demo-grid">
-            <div class="bg-swatch" style="background:var(--color-bg-brand);color:white;"><strong>BG Brand</strong><div class="bg-swatch__label">品牌主色背景</div><div class="bg-swatch__var">--color-bg-brand</div></div>
-            <div class="bg-swatch" style="background:var(--color-bg-brand-shade);color:white;"><strong>BG Shade</strong><div class="bg-swatch__label">深色变体</div><div class="bg-swatch__var">--color-bg-brand-shade</div></div>
+            <div class="bg-swatch bg-swatch--hoverable" style="background:var(--color-bg-brand);color:white;"><strong>BG Brand</strong><div class="bg-swatch__label">品牌主色背景</div><div class="bg-swatch__var">--color-bg-brand → hover: --color-bg-brand-hover</div></div>
+            <div class="bg-swatch bg-swatch--hoverable" style="background:var(--color-bg-brand-shade);color:white;"><strong>BG Shade</strong><div class="bg-swatch__label">深色变体</div><div class="bg-swatch__var">--color-bg-brand-shade</div></div>
             <div class="bg-swatch" style="background:var(--color-bg-brand-tint);color:var(--color-text-brand);"><strong>BG Tint</strong><div class="bg-swatch__label">浅色变体</div><div class="bg-swatch__var">--color-bg-brand-tint</div></div>
             <div class="bg-swatch" style="background:var(--color-bg-brand-tint-light);color:var(--color-text-brand);"><strong>Tint Light</strong><div class="bg-swatch__label">次浅变体</div><div class="bg-swatch__var">--color-bg-brand-tint-light</div></div>
             <div class="bg-swatch" style="background:var(--color-bg-brand-disabled);color:var(--color-text-brand);"><strong>Disabled</strong><div class="bg-swatch__label">禁用态</div><div class="bg-swatch__var">--color-bg-brand-disabled</div></div>
@@ -548,9 +576,9 @@
 
         <!-- 卡片4: 边框 Border -->
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-icon">📐</span>边框 Border</div><span class="card-tag">6个变量</span></div>
+          <div class="card-header"><div class="card-title"><span class="card-icon">📐</span>边框 Border</div><span class="card-tag">7个变量</span></div>
           <div class="card-body">
-            <div class="border-demo-item"><div class="border-demo-label">聚焦输入框边框</div><div class="border-demo-var">--color-border-brand</div></div>
+            <div class="border-demo-item"><div class="border-demo-label">聚焦输入框边框</div><div class="border-demo-var">--color-border-brand → hover: --color-border-brand-hover</div></div>
             <div class="border-demo-item" style="border-color:var(--color-border-brand-shade);border-width:2px;"><div class="border-demo-label">Hover 状态边框</div><div class="border-demo-var">--color-border-brand-shade</div></div>
             <div class="border-demo-item" style="border-color:var(--color-border-brand-tint);border-style:dashed;"><div class="border-demo-label">虚线选框</div><div class="border-demo-var">--color-border-brand-tint</div></div>
             <div class="border-demo-item" style="border-color:var(--color-border-brand-tint-light);border-style:dashed;"><div class="border-demo-label">次浅边框</div><div class="border-demo-var">--color-border-brand-tint-light</div></div>
@@ -560,7 +588,7 @@
 
         <!-- 卡片5: Icon 图标 -->
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-icon">✦</span>图标 Icon</div><span class="card-tag">7个变量</span></div>
+          <div class="card-header"><div class="card-title"><span class="card-icon">✦</span>图标 Icon</div><span class="card-tag">8个变量</span></div>
           <div class="card-body">
             <div class="icon-demo-row">
               <div class="icon-box icon-box--solid" title="--color-icon-brand">★</div>
@@ -570,10 +598,10 @@
               <div class="icon-box icon-box--disabled" title="--color-icon-brand-disabled">⊘</div>
             </div>
             <div class="icon-legend">
-              <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-brand)"></span>Solid: <code>--color-icon-brand</code></div>
-              <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-brand-tint)"></span>Tint: <code>--color-icon-brand-tint</code></div>
-              <div class="icon-legend-item"><span class="legend-dot" style="background:transparent;border:1px solid var(--color-icon-brand)"></span>Outline: <code>--color-border-brand</code></div>
-              <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-fill-brand-link)"></span>Link: <code>--color-icon-fill-brand-link</code></div>
+              <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-brand)"></span>Solid: <code>--color-icon-brand</code> → hover: <code>--color-icon-brand-hover</code></div>
+              <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-brand-tint)"></span>Tint: <code>--color-icon-brand-tint</code> → hover: <code>--color-icon-brand-hover</code></div>
+              <div class="icon-legend-item"><span class="legend-dot" style="background:transparent;border:1px solid var(--color-icon-brand)"></span>Outline: <code>--color-border-brand</code> → hover: <code>--color-icon-brand-hover</code></div>
+              <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-fill-brand-link)"></span>Link: <code>--color-icon-fill-brand-link</code> → hover: <code>--color-icon-brand-hover</code></div>
               <div class="icon-legend-item"><span class="legend-dot" style="background:var(--color-icon-brand-disabled)"></span>Disabled: <code>--color-icon-brand-disabled</code></div>
             </div>
           </div>
@@ -581,11 +609,11 @@
 
         <!-- 卡片6: 文本 Text -->
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-icon">Aa</span>文本 Text</div><span class="card-tag">7个变量</span></div>
+          <div class="card-header"><div class="card-title"><span class="card-icon">Aa</span>文本 Text</div><span class="card-tag">8个变量</span></div>
           <div class="card-body text-demo-stack">
-            <div class="text-line text-line--primary">主要文本<span class="text-var-name">--color-text-brand</span></div>
-            <div class="text-line text-line--shade">次要文本 / Hover态<span class="text-var-name">--color-text-brand-shade</span></div>
-            <div class="text-line text-line--tint-bg">浅底高亮文本块<span class="text-var-name">bg:tint + text:brand</span></div>
+            <div class="text-line text-line--primary">主要文本<span class="text-var-name">--color-text-brand → hover: --color-text-brand-hover</span></div>
+            <div class="text-line text-line--shade">次要文本 / Hover态<span class="text-var-name">--color-text-brand-shade → hover: --color-text-brand-hover</span></div>
+            <div class="text-line text-line--tint-bg">浅底高亮文本块<span class="text-var-name">bg:tint + text:brand → hover: --color-text-brand-hover</span></div>
             <div class="text-line text-line--disabled">禁用态文本<span class="text-var-name">--color-text-brand-disabled</span></div>
             <div class="text-line" style="color:var(--color-text-brand-tint-light);font-size:13px;">次浅色文字<span class="text-var-name">--color-text-brand-tint-light</span></div>
           </div>
@@ -628,44 +656,44 @@
 
       <!-- 一、品牌核心变量（5对 = 10行） -->
       <div class="vars-section">
-        <div class="category-header">一、品牌核心变量 (--brand-color-*) <span class="category-count">5 对（10 行）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableCoreVars"></tbody></table>
+        <div class="category-header">一、品牌核心变量 (--brand-color-*) <span class="category-count">6 对（12 行）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableCoreVars"></tbody></table>
       </div>
 
-      <!-- 二、按钮色变量（~21个 + -rgb 伴侣 ≈ 34行） -->
+      <!-- 二、按钮色变量（8个 + 5个 -rgb 伴侣 ≈ 13行） -->
       <div class="vars-section">
-        <div class="category-header">二、按钮色变量 (--color-button-*-*) <span class="category-count">~21 个（含 -rgb 伴侣）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableBtnVars"></tbody></table>
+        <div class="category-header">二、按钮色变量 (--color-button-filled-primary-*) <span class="category-count">8+5 个（含 -rgb 伴侣，fill/border/outline/text 共用）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableBtnVars"></tbody></table>
       </div>
 
       <!-- 三、背景相关（5对 = 10行） -->
       <div class="vars-section">
-        <div class="category-header">三、背景相关 (--color-bg-brand-*) <span class="category-count">5 对（10 行）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableBgVars"></tbody></table>
+        <div class="category-header">三、背景相关 (--color-bg-brand-*) <span class="category-count">6 对（12 行）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableBgVars"></tbody></table>
       </div>
 
       <!-- 四、边框相关（5对 = 10行） -->
       <div class="vars-section">
-        <div class="category-header">四、边框相关 (--color-border-brand-*) <span class="category-count">5 对（10 行）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableBorderVars"></tbody></table>
+        <div class="category-header">四、边框相关 (--color-border-brand-*) <span class="category-count">6 对（12 行）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableBorderVars"></tbody></table>
       </div>
 
       <!-- 五、图标相关（6对 = 12行） -->
       <div class="vars-section">
-        <div class="category-header">五、图标相关 (--color-icon-brand-*) <span class="category-count">6 对（12 行）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableIconVars"></tbody></table>
+        <div class="category-header">五、图标相关 (--color-icon-brand-*) <span class="category-count">7 对（14 行）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableIconVars"></tbody></table>
       </div>
 
       <!-- 六、文字/文字链接相关（6对 = 12行） -->
       <div class="vars-section">
-        <div class="category-header">六、文字/文字链接相关 (--color-text-brand-*) <span class="category-count">6 对（12 行）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableTextVars"></tbody></table>
+        <div class="category-header">六、文字/文字链接相关 (--color-text-brand-*) <span class="category-count">7 对（14 行）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableTextVars"></tbody></table>
       </div>
 
       <!-- 七、导航栏变量（含 -rgb 伴侣） -->
       <div class="vars-section">
-        <div class="category-header">七、导航栏变量 (--brand-nav-header-*) <span class="category-count">~10 个（含 -rgb 伴侣）</span></div>
-        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th></tr></thead><tbody id="tableNavVars"></tbody></table>
+        <div class="category-header">七、导航栏变量 (--brand-nav-header-*) <span class="category-count">~17 个（含 -rgb 伴侣）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableNavVars"></tbody></table>
       </div>
 
     </div><!-- /.css-vars-panel -->
@@ -673,12 +701,18 @@
     <footer class="footer"><p>Neo 平台主题换肤系统 Demo | HEX 主变量 + -RGB 伴侣变量 | TokenHelper API | getCssVarHex() 支持 ECharts | 导航栏自动识别深/浅模式</p></footer>
   </div>
 
+  <!-- ★ @ant-design/colors ESM import → 挂载到 window.antDesignColors -->
+  <script type="module">
+    import * as antDesignColors from 'https://cdn.jsdelivr.net/npm/@ant-design/colors@6.0.0/+esm';
+    window.antDesignColors = antDesignColors;
+  </script>
+
   <!-- ================================================================
        JavaScript: 模拟 TokenHelper.setBaseColor/setButtonPrimaryColor/setNavBannerColor
        ★ 对齐 tokenHelper.tsx 实现方式：
          1. 使用 <style> 标签注入 CSS 变量（而非 style.setProperty）
          2. 色板索引与 @ant-design/colors generate() 对齐
-           - colors[6] = shade (hover态)
+           - colors[4] = shade (hover态)
            - colors[0] = tint (最浅)
            - colors[1] = tint-light (次浅)
            - colors[3] = disabled (禁用态)
@@ -740,35 +774,14 @@
     }
 
     /**
-     * ★ 简化的色板生成函数（模拟 @ant-design/colors 的 generate()）
-     * 对齐 tokenHelper.tsz 中使用的 generate() 行为
-     *
-     * 返回 10 个 hex 字符串数组（从最亮到最暗）
-     * 索引映射（与 tokenHelper 一致）:
-     *   [0] = tint (最浅背景)
-     *   [1] = tint-light (次浅)
-     *   [3] = disabled
-     *   [6] = shade (hover态)
-     *   [7] = active态
+     * ★ 色板生成函数 — 直接调用 @ant-design/colors 的 generate()
+     * 返回 10 个 hex 字符串数组（从最浅到最深）：
+     *   [0..4] = 浅色区（5个）
+     *   [5]    = 原始主色
+     *   [6..9] = 深色区（4个）
      */
     function generatePalette(hex) {
-      const {r,g,b} = hexToRgb(hex);
-      const colors = [];
-      for(let i=0;i<=9;i++){
-        // ★ 与 @ant-design/colors 的 generate() 近似算法
-        const l=i<=4?1-i/10:1-Math.pow(i/10,1.3);
-        colors.push({
-          r:Math.round(r*l+(255-r)*(i<=4?(4-i)/5:0)),
-          g:Math.round(g*l+(255-g)*(i<=4?(4-i)/5:0)),
-          b:Math.round(b*l+(255-b)*(i<=4?(4-i)/5:0))
-        });
-      }
-      return colors.map(c => {
-        const hr = c.r.toString(16).padStart(2,'0');
-        const hg = c.g.toString(16).padStart(2,'0');
-        const hb = c.b.toString(16).padStart(2,'0');
-        return `#${hr}${hg}${hb}`.toUpperCase();
-      });
+      return antDesignColors.generate(hex);
     }
 
     // ========== getCssVarHex（TokenHelper 真实方法，用于 ECharts 场景）==========
@@ -783,7 +796,7 @@
     }
 
     // ========== 状态管理 ==========
-    let currentTheme = 'orange', currentButtonColor = null;
+    let currentTheme = 'orange', currentButtonColor = null, currentNavColor = '#2563EB';
     const THEME_PRESETS = { orange:'#FF6B35', blue:'#2563EB', green:'#16A34A', purple:'#7C3AED', red:'#DC2626' };
 
     // ========== 辅助：注入/更新 <style> 标签（★ 对齐 tokenHelper.tsx 方式）==========
@@ -829,8 +842,8 @@
      *   4. 通过 <style> 标签注入（非 style.setProperty）
      *
      * 注入内容：
-     *   - 品牌核心 5 个变量（hex + -rgb 双变量）
-     *   - 色板索引：shade=[6], tint=[0], tint-light=[1], disabled=[3]
+     *   - 品牌核心 6 个变量（hex + -rgb 双变量）
+     *   - 色板索引：hover=[4], shade=[6], tint=[0], tint-light=[1], disabled=[3]
      */
     function setBaseColor(hex) {
       // ★ 验证（对齐 tokenHelper.tsx）
@@ -843,22 +856,19 @@
       const colors = generatePalette(hex);
 
       // 构建 CSS 变量定义（HEX 主变量 + -RGB 伴侣变量双输出）
-      // ★ 色板索引对齐 tokenHelper.tsx：
-      //   brand-color-shade = colors[6]  （第37行）
-      //   brand-color-tint = colors[0]    （第38行）
-      //   brand-color-tint-light = colors[1]  （第39行）
-      //   brand-color-disabled = colors[3]   （第40行）
       const baseRgb = hexToRgbNumeric(hex);
       const cssVarContent = `
         :root {
           /* 品牌核心 — HEX 主变量 */
           --brand-color: ${hex};
+          --brand-color-hover: ${colors[4]};
           --brand-color-shade: ${colors[6]};
           --brand-color-tint: ${colors[0]};
           --brand-color-tint-light: ${colors[1]};
           --brand-color-disabled: ${colors[3]};
           /* 品牌核心 — -RGB 伴侣变量 */
           --brand-color-rgb: ${baseRgb};
+          --brand-color-hover-rgb: ${hexToRgbNumeric(colors[4])};
           --brand-color-shade-rgb: ${hexToRgbNumeric(colors[6])};
           --brand-color-tint-rgb: ${hexToRgbNumeric(colors[0])};
           --brand-color-tint-light-rgb: ${hexToRgbNumeric(colors[1])};
@@ -874,12 +884,15 @@
 
     // ========== 核心 API: setButtonPrimaryColor（★ 对齐 tokenHelper.setButtonFilledPrimaryColor）==========
     /**
-     * 设置按钮主色 — 模拟 TokenHelper.setButtonFilledPrimaryColor() 扩展版
+     * 设置按钮主色 — 模拟 TokenHelper.setButtonPrimaryColor()
      *
-     * ★ 对齐 tokenHelper.tsx setButtonFilledPrimaryColor()：
+     * ★ 简化设计：仅生成 --color-button-filled-primary-* 系列变量。
+     *   border / outline / text 按钮可复用 --color-button-filled-primary 作为其文字色、
+     *   边框色或半透明背景，无需额外定义 outline / text 专用变量。
+     *
+     * ★ 对齐 tokenHelper.tsx：
      *   - 使用 <style> 标签注入
-     *   - 色板索引一致
-     *   - 扩展了完整的 21 个按钮变量（含 -rgb 伴侣）
+     *   - 色板索引：hover = colors[4], active = colors[6], disabled = colors[2], tint = colors[0]
      */
     function setButtonPrimaryColor(hex) {
       if (!isValidColor(hex)) {
@@ -891,52 +904,24 @@
       const contrastColor = getContrastTextColor(hex);
       const disabledText = '#999999';
 
-      // ★ 对齐 tokenHelper.tsx setButtonFilledPrimaryColor 的色板用法：
-      //   hover = colors[6], disabled = colors[2], tint = colors[0]
       const cssVarContent = `
         :root {
           /* Filled Primary — Background (hex + -rgb) */
-          --color-button-filled-primary-bg: ${hex};
-          --color-button-filled-primary-bg-rgb: ${hexToRgbNumeric(hex)};
-          --color-button-filled-primary-bg-hover: ${palette[6]};
-          --color-button-filled-primary-bg-hover-rgb: ${hexToRgbNumeric(palette[6])};
-          --color-button-filled-primary-bg-active: ${palette[7] || palette[6]};
-          --color-button-filled-primary-bg-active-rgb: ${hexToRgbNumeric(palette[7] || palette[6])};
-          --color-button-filled-primary-bg-tint: ${palette[0]};
-          --color-button-filled-primary-bg-tint-rgb: ${hexToRgbNumeric(palette[0])};
-          --color-button-filled-primary-bg-disabled: ${palette[2]};
-          --color-button-filled-primary-bg-disabled-rgb: ${hexToRgbNumeric(palette[2])};
+          --color-button-filled-primary: ${hex};
+          --color-button-filled-primary-rgb: ${hexToRgbNumeric(hex)};
+          --color-button-filled-primary-hover: ${palette[4]};
+          --color-button-filled-primary-hover-rgb: ${hexToRgbNumeric(palette[4])};
+          --color-button-filled-primary-active: ${palette[6]};
+          --color-button-filled-primary-active-rgb: ${hexToRgbNumeric(palette[6])};
+          --color-button-filled-primary-tint: ${palette[0]};
+          --color-button-filled-primary-tint-rgb: ${hexToRgbNumeric(palette[0])};
+          --color-button-filled-primary-disabled: ${palette[2]};
+          --color-button-filled-primary-disabled-rgb: ${hexToRgbNumeric(palette[2])};
 
           /* Filled Primary — Text Color（固定色） */
           --color-button-filled-primary-color: ${contrastColor};
           --color-button-filled-primary-color-hover: ${contrastColor};
           --color-button-filled-primary-color-disabled: ${disabledText};
-
-          /* Filled Primary — Border（transparent） */
-          --color-button-filled-primary-border: transparent;
-          --color-button-filled-primary-border-hover: transparent;
-
-          /* Outline Primary (hex + -rgb) */
-          --color-button-outline-primary-color: ${hex};
-          --color-button-outline-primary-color-rgb: ${hexToRgbNumeric(hex)};
-          --color-button-outline-primary-color-hover: ${palette[6]};
-          --color-button-outline-primary-color-hover-rgb: ${hexToRgbNumeric(palette[6])};
-          --color-button-outline-primary-border: ${hex};
-          --color-button-outline-primary-border-rgb: ${hexToRgbNumeric(hex)};
-          --color-button-outline-primary-border-hover: ${palette[6]};
-          --color-button-outline-primary-border-hover-rgb: ${hexToRgbNumeric(palette[6])};
-          --color-button-outline-primary-bg: transparent;
-          --color-button-outline-primary-bg-hover: ${hex};
-          --color-button-outline-primary-bg-hover-rgb: ${hexToRgbNumeric(hex)};
-
-          /* Text / Link Button (hex + -rgb) */
-          --color-button-text-primary-color: ${hex};
-          --color-button-text-primary-color-rgb: ${hexToRgbNumeric(hex)};
-          --color-button-text-primary-color-hover: ${palette[6]};
-          --color-button-text-primary-color-hover-rgb: ${hexToRgbNumeric(palette[6])};
-          --color-button-text-primary-bg: transparent;
-          --color-button-text-primary-bg-hover: ${hex};
-          --color-button-text-primary-bg-hover-rgb: ${hexToRgbNumeric(hex)};
         }
       `;
 
@@ -972,13 +957,19 @@
             --brand-nav-header-bg: ${navHexUpper};
             --brand-nav-header-bg-rgb: ${navRgb};
             --brand-nav-header-font: #ffffff;
+            --brand-nav-header-font-rgb: 255, 255, 255;
+            --brand-nav-header-font-hover: rgba(255, 255, 255, 0.85);
+            --brand-nav-header-font-hover-rgb: 255, 255, 255;
             --brand-nav-header-icon: #ffffff;
-            --brand-nav-header-launcher-icon: #ffffff;
-            --brand-nav-header-select: ${navHexUpper};
-            --brand-nav-header-select-rgb: ${navRgb};
+            --brand-nav-header-icon-rgb: 255, 255, 255;
+            --brand-nav-header-icon-hover: rgba(255, 255, 255, 0.85);
+            --brand-nav-header-icon-hover-rgb: 255, 255, 255;
+            --brand-nav-header-launcher-icon: var(--brand-color);
+            --brand-nav-header-launcher-icon-rgb: var(--brand-color-rgb);
+            --brand-nav-header-select: var(--brand-color-shade);
             --brand-nav-header-select-bg: rgba(255, 255, 255, 0.20);
-            --brand-nav-header-back-opacity: rgba(255, 255, 255, 0.20);
-            --brand-nav-header-back-hover: rgba(255, 255, 255, 0.30);
+            --brand-nav-header-elem-opacity: rgba(60, 80, 224, 0.08);
+            --brand-nav-header-elem-hover: rgba(60, 80, 224, 0.12);
             --brand-nav-header-placeholder: rgba(255, 255, 255, 0.70);
           }
         `;
@@ -990,14 +981,21 @@
             --brand-nav-header-bg: ${navHexUpper};
             --brand-nav-header-bg-rgb: ${navRgb};
             --brand-nav-header-font: #000000;
+            --brand-nav-header-font-rgb: 0, 0, 0;
+            --brand-nav-header-font-hover: #333333;
+            --brand-nav-header-font-hover-rgb: 51, 51, 51;
             --brand-nav-header-icon: #8c8c8c;
+            --brand-nav-header-icon-rgb: 140, 140, 140;
+            --brand-nav-header-icon-hover: #595959;
+            --brand-nav-header-icon-hover-rgb: 89, 89, 89;
             --brand-nav-header-launcher-icon: var(--brand-color);
-            --brand-nav-header-select: var(--brand-color);
+            --brand-nav-header-launcher-icon-rgb: var(--brand-color-rgb);
+            --brand-nav-header-select: var(--brand-color-shade);
             --brand-nav-header-select-bg: #e6effe;
-            --brand-nav-header-back-opacity: ${navHexUpper};
-            --brand-nav-header-back-opacity-rgb: ${navRgb};
-            --brand-nav-header-back-hover: ${navHexUpper};
-            --brand-nav-header-back-hover-rgb: ${navRgb};
+            --brand-nav-header-elem-opacity: ${navHexUpper};
+            --brand-nav-header-elem-opacity-rgb: ${navRgb};
+            --brand-nav-header-elem-hover: ${navHexUpper};
+            --brand-nav-header-elem-hover-rgb: ${navRgb};
             --brand-nav-header-placeholder: #aaaaaa;
           }
         `;
@@ -1009,11 +1007,26 @@
       console.log(`%c[setNavBannerColor] → ${navHexUpper}, mode=${useDark?'dark(auto)':'light(auto)'}`, `color:${navHex};font-weight:bold`);
     }
 
-    // ========== 更新导航模式指示器 ==========
+    // ========== 更新模式指示器 ==========
     function updateNavModeIndicator(isDark) {
       const el = document.getElementById('navModeIndicator');
       const iconEl = document.getElementById('navModeIcon');
       const textEl = document.getElementById('navModeText');
+      if (isDark) {
+        el.className = 'nav-mode-indicator nav-mode-indicator--dark';
+        iconEl.textContent = '🌙';
+        textEl.textContent = '自动·深色';
+      } else {
+        el.className = 'nav-mode-indicator nav-mode-indicator--light';
+        iconEl.textContent = '☀️';
+        textEl.textContent = '自动·浅色';
+      }
+    }
+
+    function updateBrandModeIndicator(isDark) {
+      const el = document.getElementById('brandModeIndicator');
+      const iconEl = document.getElementById('brandModeIcon');
+      const textEl = document.getElementById('brandModeText');
       if (isDark) {
         el.className = 'nav-mode-indicator nav-mode-indicator--dark';
         iconEl.textContent = '🌙';
@@ -1038,10 +1051,11 @@
       // ② 设置按钮色（若未独立设置则跟随品牌色）
       if(!currentButtonColor) setButtonPrimaryColor(hex);
 
-      // ③ ★ 设置导航栏配色（自动根据品牌色识别深/浅模式）
-      //    深色品牌色（橙/蓝/紫/红等）→ 深色导航
-      //    如果用户选的是很浅的品牌色 → 自动切到浅色导航
-      setNavBannerColor(hex);
+      // ③ ★ 设置导航栏配色（根据当前选择：跟随品牌 / 自定义色）
+      applyNavBannerColor();
+
+      // ④ ★ 更新品牌色深浅指示器
+      updateBrandModeIndicator(isDarkColor(hex));
 
       updateThemeButtons(themeName);
       document.getElementById('currentThemeLabel').textContent =
@@ -1091,6 +1105,38 @@
       renderAllTables();
     }
 
+    // ========== 导航栏颜色配置 ==========
+    /**
+     * 设置导航栏配色
+     * @param {string} navHex - hex 颜色值（如 '#282E65'）
+     */
+    function setNavColor(navHex) {
+      if (!isValidColor(navHex)) {
+        console.error(`[setNavColor] Invalid color value: ${navHex}`);
+        return;
+      }
+      currentNavColor = navHex;
+
+      // 更新按钮激活态
+      const presetMap = { '#FF6B35':'navColorOrange', '#2563EB':'navColorBlue', '#16A34A':'navColorGreen', '#7C3AED':'navColorPurple', '#DC2626':'navColorRed' };
+      Object.values(presetMap).forEach(id => document.getElementById(id)?.classList.remove('active'));
+      if (presetMap[navHex]) document.getElementById(presetMap[navHex]).classList.add('active');
+
+      // 更新取色器显示
+      document.getElementById('customNavColor').value = navHex;
+      document.getElementById('customNavHex').textContent = navHex;
+
+      applyNavBannerColor();
+      renderAllTables();
+    }
+
+    /**
+     * 根据当前选择的导航色应用配色
+     */
+    function applyNavBannerColor() {
+      setNavBannerColor(currentNavColor);
+    }
+
     // ========== 表格渲染（展示 HEX 主变量 + -RGB 伴侣变量）==========
 
     /**
@@ -1099,74 +1145,69 @@
      */
     const VAR_TABLE_GROUPS = [
       { tid:'tableCoreVars', vars:[
-        ['--brand-color', true],
-        ['--brand-color-shade', true],
-        ['--brand-color-tint', true],
-        ['--brand-color-tint-light', true],
-        ['--brand-color-disabled', true]
+        ['--brand-color', true, '品牌主色 — 所有品牌色体系的根源'],
+        ['--brand-color-hover', true, '品牌 Hover 色 — colors[4]，各元素的 hover 交互态'],
+        ['--brand-color-shade', true, '品牌深色变体 — colors[6]，active/按下/选中态'],
+        ['--brand-color-tint', true, '品牌最浅变体 — 大面积背景底色'],
+        ['--brand-color-tint-light', true, '品牌次浅变体 — 浅色背景/hover 背景'],
+        ['--brand-color-disabled', true, '品牌禁用态 — 按钮/输入框等禁用风格']
       ]},
       { tid:'tableBtnVars', vars:[
-        ['--color-button-filled-primary-bg', true],
-        ['--color-button-filled-primary-bg-hover', true],
-        ['--color-button-filled-primary-bg-active', true],
-        ['--color-button-filled-primary-bg-tint', true],
-        ['--color-button-filled-primary-bg-disabled', true],
-        ['--color-button-filled-primary-color', false],
-        ['--color-button-filled-primary-color-hover', false],
-        ['--color-button-filled-primary-color-disabled', false],
-        ['--color-button-filled-primary-border', false],
-        ['--color-button-filled-primary-border-hover', false],
-        ['--color-button-outline-primary-color', true],
-        ['--color-button-outline-primary-color-hover', true],
-        ['--color-button-outline-primary-border', true],
-        ['--color-button-outline-primary-border-hover', true],
-        ['--color-button-outline-primary-bg', false],
-        ['--color-button-outline-primary-bg-hover', true],
-        ['--color-button-text-primary-color', true],
-        ['--color-button-text-primary-color-hover', true],
-        ['--color-button-text-primary-bg', false],
-        ['--color-button-text-primary-bg-hover', true]
+        ['--color-button-filled-primary', true, '填充主按钮 — 正常态背景色（★ 同时可用于 border/outline/text 颜色）'],
+        ['--color-button-filled-primary-hover', true, '填充主按钮 — 鼠标悬停背景色'],
+        ['--color-button-filled-primary-active', true, '填充主按钮 — 点击按下背景色'],
+        ['--color-button-filled-primary-tint', true, '填充主按钮 — 浅色背景'],
+        ['--color-button-filled-primary-disabled', true, '填充主按钮 — 禁用态背景色'],
+        ['--color-button-filled-primary-color', false, '填充主按钮 — 正常态文字色（自动对比色）'],
+        ['--color-button-filled-primary-color-hover', false, '填充主按钮 — 悬停文字色'],
+        ['--color-button-filled-primary-color-disabled', false, '填充主按钮 — 禁用文字色']
       ]},
       { tid:'tableBgVars', vars:[
-        ['--color-bg-brand', true],
-        ['--color-bg-brand-shade', true],
-        ['--color-bg-brand-tint', true],
-        ['--color-bg-brand-tint-light', true],
-        ['--color-bg-brand-disabled', true]
+        ['--color-bg-brand', true, '品牌主色背景 — 强品牌感区块底色'],
+        ['--color-bg-brand-hover', true, '品牌 Hover 背景 — hover 交互态（colors[4]）'],
+        ['--color-bg-brand-shade', true, '品牌深色背景 — 重点强调区域的底色'],
+        ['--color-bg-brand-tint', true, '品牌浅色背景 — 卡片/选中行轻量底色'],
+        ['--color-bg-brand-tint-light', true, '品牌次浅色背景 — hover 态浅底色'],
+        ['--color-bg-brand-disabled', true, '品牌禁用态背景']
       ]},
       { tid:'tableBorderVars', vars:[
-        ['--color-border-brand', true],
-        ['--color-border-brand-shade', true],
-        ['--color-border-brand-tint', true],
-        ['--color-border-brand-tint-light', true],
-        ['--color-border-brand-disabled', true]
+        ['--color-border-brand', true, '品牌主色边框 — input focus / 选中边框'],
+        ['--color-border-brand-hover', true, '品牌 Hover 边框 — hover 交互态（colors[4]）'],
+        ['--color-border-brand-shade', true, '品牌深色边框 — active 加深边框'],
+        ['--color-border-brand-tint', true, '品牌浅色边框 — 虚线选框等'],
+        ['--color-border-brand-tint-light', true, '品牌次浅色边框 — 轻量分割线'],
+        ['--color-border-brand-disabled', true, '品牌禁用态边框']
       ]},
       { tid:'tableIconVars', vars:[
-        ['--color-icon-brand', true],
-        ['--color-icon-brand-shade', true],
-        ['--color-icon-brand-tint', true],
-        ['--color-icon-brand-tint-light', true],
-        ['--color-icon-fill-brand-link', true],
-        ['--color-icon-brand-disabled', true]
+        ['--color-icon-brand', true, '图标主色 — 功能图标正常态'],
+        ['--color-icon-brand-hover', true, '图标 Hover 色 — hover 交互态（colors[4]）'],
+        ['--color-icon-brand-shade', true, '图标深色 — 图标 active 态'],
+        ['--color-icon-brand-tint', true, '图标浅色 — 浅底上的图标'],
+        ['--color-icon-brand-tint-light', true, '图标次浅色'],
+        ['--color-icon-fill-brand-link', true, '图标链接色 — 可点击图标 hover 交互色'],
+        ['--color-icon-brand-disabled', true, '图标禁用色']
       ]},
       { tid:'tableTextVars', vars:[
-        ['--color-text-brand', true],
-        ['--color-text-brand-shade', true],
-        ['--color-text-brand-tint', true],
-        ['--color-text-brand-tint-light', true],
-        ['--color-text-brand-disabled', true],
-        ['--color-text-brand-link', true]
+        ['--color-text-brand', true, '品牌色文字 — 关键数据/主标题/链接基础色'],
+        ['--color-text-brand-hover', true, '品牌 Hover 文字色 — hover 交互态（colors[4]）'],
+        ['--color-text-brand-shade', true, '品牌深色文字 — 链接 active 态'],
+        ['--color-text-brand-tint', true, '品牌浅色文字底 — 浅底高亮文字背景'],
+        ['--color-text-brand-tint-light', true, '品牌次浅色文字'],
+        ['--color-text-brand-disabled', true, '品牌禁用态文字色'],
+        ['--color-text-brand-link', true, '文字链接色 — hover 加深效果']
       ]},
       { tid:'tableNavVars', vars:[
-        ['--brand-nav-header-bg', true],
-        ['--brand-nav-header-font', false],
-        ['--brand-nav-header-icon', false],
-        ['--brand-nav-header-launcher-icon', false],
-        ['--brand-nav-header-select', true],
-        ['--brand-nav-header-select-bg', false],
-        ['--brand-nav-header-back-opacity', false],
-        ['--brand-nav-header-back-hover', false],
-        ['--brand-nav-header-placeholder', false]
+        ['--brand-nav-header-bg', true, '导航栏背景色'],
+        ['--brand-nav-header-font', false, '导航栏标题/正文文字色（自动识别深浅色）'],
+        ['--brand-nav-header-font-hover', true, '导航栏文字 Hover 态'],
+        ['--brand-nav-header-icon', false, '导航栏图标色（返回/关闭等）'],
+        ['--brand-nav-header-icon-hover', true, '导航栏图标 Hover 态'],
+        ['--brand-nav-header-launcher-icon', false, '启动器图标色（使用品牌色）'],
+        ['--brand-nav-header-select', true, '选中项高亮色（使用品牌深色变体）'],
+        ['--brand-nav-header-select-bg', false, '导航栏选中项背景色'],
+        ['--brand-nav-header-elem-opacity', false, '导航元素半透明层'],
+        ['--brand-nav-header-elem-hover', false, '导航元素悬停背景色'],
+        ['--brand-nav-header-placeholder', false, '导航栏输入框占位符色']
       ]},
     ];
 
@@ -1181,22 +1222,23 @@
       const rs = getComputedStyle(document.documentElement);
 
       let html = '';
-      g.vars.forEach(([name, hasRgb]) => {
+      g.vars.forEach(([name, hasRgb, desc]) => {
         // ---- 主变量行（HEX）----
         const val = rs.getPropertyValue(name).trim();
         const swatchHtml = isColorLike(val) && val !== 'transparent'
           ? `<div class="var-swatch-cell" style="background-color:${val};"></div>`
           : '';
-        html += `<tr><td>${swatchHtml}</td><td class="var-name-cell">${name}</td><td class="var-value-cell">${val}</td></tr>`;
+        html += `<tr><td>${swatchHtml}</td><td class="var-name-cell">${name}</td><td class="var-value-cell">${val}</td><td class="var-desc-cell">${desc || ''}</td></tr>`;
 
         // ---- -rgb 伴侣行（如果有）----
         if(hasRgb) {
           const rgbVarName = name + '-rgb';
           const rgbVal = rs.getPropertyValue(rgbVarName).trim();
           html += `<tr class="row-companion">` +
-            `<td><div class="var-swatch-cell rgb-var">RGB</div></td>` +
+            `<td></td>` +
             `<td class="var-name-cell var-companion">${rgbVarName}</td>` +
-            `<td class="var-value-cell value-rgb">${rgbVal}</td></tr>`;
+            `<td class="var-value-cell value-rgb">${rgbVal}</td>` +
+            `<td class="var-desc-cell">rgba() 半透明场景使用</td></tr>`;
         }
       });
       tb.innerHTML = html;
