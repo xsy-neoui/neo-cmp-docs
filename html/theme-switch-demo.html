@@ -14,7 +14,7 @@
     :root {
       /* ===== 品牌主色及其衍生变量 — HEX 主变量（6个）===== */
       --brand-color: #FF6B35;
-      --brand-color-hover: #E55A20;
+      --brand-color-hover: #CC3600;   /* ★ 浅色品牌 → hover 加深(colors[6]) */
       --brand-color-shade: #CC3600;
       --brand-color-tint: #FFF3EB;
       --brand-color-tint-light: #FFE4D5;
@@ -22,7 +22,7 @@
 
       /* ===== 品牌主色及其衍生 — -rgb 伴侣变量（纯数值，无 rgb() 包裹）===== */
       --brand-color-rgb: 255, 107, 53;
-      --brand-color-hover-rgb: 229, 90, 32;
+      --brand-color-hover-rgb: 204, 54, 0;
       --brand-color-shade-rgb: 204, 54, 0;
       --brand-color-tint-rgb: 255, 243, 235;
       --brand-color-tint-light-rgb: 255, 228, 213;
@@ -95,8 +95,8 @@
       /* Filled Primary - Background (hex + -rgb) */
       --color-button-filled-primary: #FF6B35;
       --color-button-filled-primary-rgb: 255, 107, 53;
-      --color-button-filled-primary-hover: #E55A20;
-      --color-button-filled-primary-hover-rgb: 229, 90, 32;
+      --color-button-filled-primary-hover: #CC3600;   /* ★ 浅色按钮 → hover 加深(colors[6]) */
+      --color-button-filled-primary-hover-rgb: 204, 54, 0;
       --color-button-filled-primary-active: #CC3600;
       --color-button-filled-primary-active-rgb: 204, 54, 0;
       --color-button-filled-primary-tint: #FFF3EB;
@@ -107,6 +107,14 @@
       --color-button-filled-primary-color: #ffffff;
       --color-button-filled-primary-color-hover: #ffffff;
       --color-button-filled-primary-color-disabled: #999999;
+
+      /* Filled Primary Secondary — 次按钮（每个变量降一级变浅：colors[4]/hoverIdx-1/colors[1]） */
+      --color-button-filled-primary-secondary: #FF9A6E;
+      --color-button-filled-primary-secondary-rgb: 255, 154, 110;
+      --color-button-filled-primary-secondary-hover: #FF6B35;
+      --color-button-filled-primary-secondary-hover-rgb: 255, 107, 53;
+      --color-button-filled-primary-secondary-disable: #FFE4D5;
+      --color-button-filled-primary-secondary-disable-rgb: 255, 228, 213;
 
       /* ===== 导航栏变量（17个 + -rgb 伴侣，默认根据品牌色自动识别）===== */
       --brand-nav-header-bg: #282E65;
@@ -347,6 +355,12 @@
     .demo-btn--outline-primary:hover { background: rgba(var(--color-button-filled-primary-rgb), 0.08); border-color: var(--color-button-filled-primary-hover); color: var(--color-button-filled-primary-hover); }
     .demo-btn--text-primary { background: transparent; color: var(--color-button-filled-primary); border: 1px solid transparent; padding: 10px 14px; }
     .demo-btn--text-primary:hover { background: rgba(var(--color-button-filled-primary-rgb), 0.08); color: var(--color-button-filled-primary-hover); }
+    .demo-btn--secondary {
+      background: var(--color-button-filled-primary-secondary);
+      color: var(--color-button-filled-primary-color);
+    }
+    .demo-btn--secondary:hover { background: var(--color-button-filled-primary-secondary-hover); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(var(--color-button-filled-primary-secondary-rgb), 0.25); }
+    .demo-btn--secondary.disabled, .demo-btn--secondary:disabled { background: var(--color-button-filled-primary-secondary-disable); color: var(--color-button-filled-primary-color-disabled); cursor: not-allowed; transform: none; box-shadow: none; }
     .btn-group-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); margin-bottom: 4px; }
 
     /* ========== 元素展示：文字链接 Link ========== */
@@ -524,12 +538,17 @@
 
         <!-- 卡片1: 按钮 Button -->
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-icon">⚡</span>按钮 Button</div><span class="card-tag">8+5个变量</span></div>
+          <div class="card-header"><div class="card-title"><span class="card-icon">⚡</span>按钮 Button</div><span class="card-tag">11+8个变量</span></div>
           <div class="card-body button-demo-area">
             <div class="btn-group-label">Filled Primary（hover 使用 --color-button-filled-primary-hover + --color-button-filled-primary-color-hover）</div>
             <div class="button-row">
               <button class="demo-btn demo-btn--filled-primary">主要操作</button>
               <button class="demo-btn demo-btn--filled-primary disabled" disabled>禁用状态</button>
+            </div>
+            <div class="btn-group-label">Secondary（★ 次按钮 — 每个变量降一级变浅，palette[4]/[hoverIdx-1]/[1]）</div>
+            <div class="button-row">
+              <button class="demo-btn demo-btn--secondary">次要操作</button>
+              <button class="demo-btn demo-btn--secondary disabled" disabled>禁用状态</button>
             </div>
             <div class="btn-group-label">Outline（★ 文字/边框复用 --color-button-filled-primary）</div>
             <div class="button-row">
@@ -662,7 +681,7 @@
 
       <!-- 二、按钮色变量（8个 + 5个 -rgb 伴侣 ≈ 13行） -->
       <div class="vars-section">
-        <div class="category-header">二、按钮色变量 (--color-button-filled-primary-*) <span class="category-count">8+5 个（含 -rgb 伴侣，fill/border/outline/text 共用）</span></div>
+        <div class="category-header">二、按钮色变量 (--color-button-filled-primary-*) <span class="category-count">11+8 个（含 -rgb 伴侣 + 3个次按钮变量，fill/border/outline/text 共用）</span></div>
         <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableBtnVars"></tbody></table>
       </div>
 
@@ -766,11 +785,15 @@
     }
 
     /**
-     * 获取对比文字色（深底白字 / 浅底黑字）
+     * 获取对比文字色（深底白字 / 浅底深灰字）
      * 用于按钮文字色自动适配
+     *
+     * ★ 设计考量：浅色背景不使用纯黑 #000000（对比度过高、视觉刺眼），
+     *   改用 #333333（接近 --color-neutral-9 / --color-text-title 的深灰色）
+     *   以获得更柔和的视觉体验。
      */
     function getContrastTextColor(hex) {
-      return isDarkColor(hex) ? '#ffffff' : '#000000';
+      return isDarkColor(hex) ? '#ffffff' : '#333333';
     }
 
     /**
@@ -843,7 +866,8 @@
      *
      * 注入内容：
      *   - 品牌核心 6 个变量（hex + -rgb 双变量）
-     *   - 色板索引：hover=[4], shade=[6], tint=[0], tint-light=[1], disabled=[3]
+     *   - 色板索引：shade=[6], tint=[0], tint-light=[1], disabled=[3]
+     *   - ★ hover 动态规则：isDarkColor? 浅→加深(colors[6]) : 深→变浅(colors[4])
      */
     function setBaseColor(hex) {
       // ★ 验证（对齐 tokenHelper.tsx）
@@ -852,23 +876,25 @@
         return;
       }
 
-      // ★ 使用 generate() 生成色板（对齐 tokenHelper.tsx 第29行）
+      // ★ 使用 generate() 生成色板
       const colors = generatePalette(hex);
 
-      // 构建 CSS 变量定义（HEX 主变量 + -RGB 伴侣变量双输出）
+      // ★ hover 动态规则：浅色加深、深色变浅
+      const hoverIdx = isDarkColor(hex) ? 4 : 6;   // dark→lighter(4), light→darker(6)
+
       const baseRgb = hexToRgbNumeric(hex);
       const cssVarContent = `
         :root {
           /* 品牌核心 — HEX 主变量 */
           --brand-color: ${hex};
-          --brand-color-hover: ${colors[4]};
+          --brand-color-hover: ${colors[hoverIdx]};
           --brand-color-shade: ${colors[6]};
           --brand-color-tint: ${colors[0]};
           --brand-color-tint-light: ${colors[1]};
           --brand-color-disabled: ${colors[3]};
           /* 品牌核心 — -RGB 伴侣变量 */
           --brand-color-rgb: ${baseRgb};
-          --brand-color-hover-rgb: ${hexToRgbNumeric(colors[4])};
+          --brand-color-hover-rgb: ${hexToRgbNumeric(colors[hoverIdx])};
           --brand-color-shade-rgb: ${hexToRgbNumeric(colors[6])};
           --brand-color-tint-rgb: ${hexToRgbNumeric(colors[0])};
           --brand-color-tint-light-rgb: ${hexToRgbNumeric(colors[1])};
@@ -876,10 +902,9 @@
         }
       `;
 
-      // ★ 通过 <style> 标签注入（对齐 tokenHelper.tsx 第69-91行）
       injectStyleTag('theme---base-color-vars', cssVarContent, 'data-theme-vars');
 
-      console.log(`%c[setBaseColor] → ${hex.toUpperCase()} (hex) + ${baseRgb} (-rgb)`, `color:${hex};font-weight:bold`);
+      console.log(`%c[setBaseColor] → ${hex.toUpperCase()} (hover=${isDarkColor(hex)?'变浅[4]':'加深[6]'})`, `color:${hex};font-weight:bold`);
     }
 
     // ========== 核心 API: setButtonPrimaryColor（★ 对齐 tokenHelper.setButtonFilledPrimaryColor）==========
@@ -892,7 +917,8 @@
      *
      * ★ 对齐 tokenHelper.tsx：
      *   - 使用 <style> 标签注入
-     *   - 色板索引：hover = colors[4], active = colors[6], disabled = colors[2], tint = colors[0]
+     *   - 色板索引：active = colors[6], disabled = colors[2], tint = colors[0]
+     *   - ★ hover 动态：isDarkColor? 深→变浅(colors[4]) : 浅→加深(colors[6])
      */
     function setButtonPrimaryColor(hex) {
       if (!isValidColor(hex)) {
@@ -904,13 +930,16 @@
       const contrastColor = getContrastTextColor(hex);
       const disabledText = '#999999';
 
+      // ★ hover 动态规则：浅色加深、深色变浅
+      const hoverIdx = isDarkColor(hex) ? 4 : 6;   // dark→lighter(4), light→darker(6)
+
       const cssVarContent = `
         :root {
           /* Filled Primary — Background (hex + -rgb) */
           --color-button-filled-primary: ${hex};
           --color-button-filled-primary-rgb: ${hexToRgbNumeric(hex)};
-          --color-button-filled-primary-hover: ${palette[4]};
-          --color-button-filled-primary-hover-rgb: ${hexToRgbNumeric(palette[4])};
+          --color-button-filled-primary-hover: ${palette[hoverIdx]};
+          --color-button-filled-primary-hover-rgb: ${hexToRgbNumeric(palette[hoverIdx])};
           --color-button-filled-primary-active: ${palette[6]};
           --color-button-filled-primary-active-rgb: ${hexToRgbNumeric(palette[6])};
           --color-button-filled-primary-tint: ${palette[0]};
@@ -922,6 +951,14 @@
           --color-button-filled-primary-color: ${contrastColor};
           --color-button-filled-primary-color-hover: ${contrastColor};
           --color-button-filled-primary-color-disabled: ${disabledText};
+
+          /* Filled Primary Secondary — 次按钮（★ 每个变量降一级变浅） */
+          --color-button-filled-primary-secondary: ${palette[4]};
+          --color-button-filled-primary-secondary-rgb: ${hexToRgbNumeric(palette[4])};
+          --color-button-filled-primary-secondary-hover: ${palette[hoverIdx - 1]};
+          --color-button-filled-primary-secondary-hover-rgb: ${hexToRgbNumeric(palette[hoverIdx - 1])};
+          --color-button-filled-primary-secondary-disable: ${palette[1]};
+          --color-button-filled-primary-secondary-disable-rgb: ${hexToRgbNumeric(palette[1])};
         }
       `;
 
@@ -1160,7 +1197,10 @@
         ['--color-button-filled-primary-disabled', true, '填充主按钮 — 禁用态背景色'],
         ['--color-button-filled-primary-color', false, '填充主按钮 — 正常态文字色（自动对比色）'],
         ['--color-button-filled-primary-color-hover', false, '填充主按钮 — 悬停文字色'],
-        ['--color-button-filled-primary-color-disabled', false, '填充主按钮 — 禁用文字色']
+        ['--color-button-filled-primary-color-disabled', false, '填充主按钮 — 禁用文字色'],
+        ['--color-button-filled-primary-secondary', true, '★ 次按钮 — 正常态背景（降一级变浅，colors[4]）'],
+        ['--color-button-filled-primary-secondary-hover', true, '★ 次按钮 — 悬停态背景（比 hover 降一级变浅）'],
+        ['--color-button-filled-primary-secondary-disable', true, '★ 次按钮 — 禁用态背景（比 disable 降一级变浅）']
       ]},
       { tid:'tableBgVars', vars:[
         ['--color-bg-brand', true, '品牌主色背景 — 强品牌感区块底色'],
