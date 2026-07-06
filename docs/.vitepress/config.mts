@@ -91,6 +91,15 @@ export default defineConfig({
             ],
             link: '/使用平台组件'
           },
+          {
+            text: '主题换肤',
+            items: [
+               { text: '支持换肤的功能组件开发', link: '/theme/如何开发支持换肤的功能组件' },
+               { text: '品牌色 CSS 变量列表', link: '/theme/Neo平台品牌色CSS变量列表' },
+               { text: '历史项目主题换肤升级指南', link: '/theme/历史项目主题换肤升级指南' },
+               { text: '主题换肤 Skill 安装与使用', link: '/theme/主题换肤Skill安装使用' },
+            ]
+          },
           { text: '常见问题', link: '/常见问题' }
         ],
       },

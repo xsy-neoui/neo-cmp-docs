@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     /* ============================================
-       Neo 平台 CSS 变量体系定义（TokenHelper 真实变量）
+       Neo 平台 CSS 变量体系定义（ThemeHelper 真实变量）
        ★ 核心设计：HEX 主变量 + -RGB 伴侣变量（纯数值，供 rgba() 使用）
        默认橙色主题 Brand: #FF6B35
     ============================================ */
@@ -461,7 +461,7 @@
     <header class="header">
       <div class="header-left">
         <h1 class="header-title">Neo 平台主题换肤系统</h1>
-        <p>品牌 / 按钮 / 导航 三色独立体系 · HEX 主变量 + -RGB 伴侣变量 · TokenHelper API</p>
+        <p>品牌 / 按钮 / 导航 三色独立体系 · HEX 主变量 + -RGB 伴侣变量 · ThemeHelper API</p>
       </div>
       <div class="header-controls">
         <span class="current-indicator"><span class="indicator-dot"></span><span id="currentThemeLabel">橙色主题</span></span>
@@ -531,7 +531,7 @@
     <section class="preview-section">
       <div class="section-header">
         <h2 class="section-title">组件预览 — 六大元素类型对品牌色 CSS 变量的使用</h2>
-        <p class="section-desc">以下所有组件均通过 TokenHelper 的真实 CSS 变量消费品牌色，切换主题时颜色同步更新</p>
+        <p class="section-desc">以下所有组件均通过 ThemeHelper 的真实 CSS 变量消费品牌色，切换主题时颜色同步更新</p>
       </div>
 
       <div class="preview-grid">
@@ -658,7 +658,7 @@
               <div class="overlay-bg">Aa</div>
               <div class="overlay-frosted">
                 <div class="overlay-title">覆盖层效果 — 通过 -rgb 伴侣变量实现</div>
-                <div class="overlay-desc">核心用法：<code>rgba(var(--brand-color-rgb), 0.72)</code> — 纯 CSS 实现，无需 JavaScript 运行时转换。TokenHelper 在 setBaseColor() 时自动为每个 hex 变量生成对应的 -rgb 伴侣变量（纯数值格式如 <code>255, 107, 53</code>），直接嵌入 <code>rgba()</code> 函数中使用。</div>
+                <div class="overlay-desc">核心用法：<code>rgba(var(--brand-color-rgb), 0.72)</code> — 纯 CSS 实现，无需 JavaScript 运行时转换。ThemeHelper 在 setBaseColor() 时自动为每个 hex 变量生成对应的 -rgb 伴侣变量（纯数值格式如 <code>255, 107, 53</code>），直接嵌入 <code>rgba()</code> 函数中使用。</div>
                 <div class="overlay-tag">格式: rgba(var(--xxx-rgb), &lt;alpha&gt;)</div>
                 <div class="overlay-code" id="overlayCodeHint">当前: rgba(var(--brand-color-rgb), 0.72)</div>
               </div>
@@ -717,7 +717,7 @@
 
     </div><!-- /.css-vars-panel -->
 
-    <footer class="footer"><p>Neo 平台主题换肤系统 Demo | HEX 主变量 + -RGB 伴侣变量 | TokenHelper API | getCssVarHex() 支持 ECharts | 导航栏自动识别深/浅模式</p></footer>
+    <footer class="footer"><p>Neo 平台主题换肤系统 Demo | HEX 主变量 + -RGB 伴侣变量 | ThemeHelper API | getCssVarHex() 支持 ECharts | 导航栏自动识别深/浅模式</p></footer>
   </div>
 
   <!-- ★ @ant-design/colors ESM import → 挂载到 window.antDesignColors -->
@@ -727,8 +727,8 @@
   </script>
 
   <!-- ================================================================
-       JavaScript: 模拟 TokenHelper.setBaseColor/setButtonPrimaryColor/setNavBannerColor
-       ★ 对齐 tokenHelper.tsx 实现方式：
+       JavaScript: 模拟 ThemeHelper.setBaseColor/setButtonPrimaryColor/setNavBannerColor
+       ★ 对齐 ThemeHelper.tsx 实现方式：
          1. 使用 <style> 标签注入 CSS 变量（而非 style.setProperty）
          2. 色板索引与 @ant-design/colors generate() 对齐
            - colors[4] = shade (hover态)
@@ -738,12 +738,12 @@
          3. 同时注入 HEX 主变量 + -RGB 伴侣变量
   ================================================================= -->
   <script>
-    // ========== 工具函数（对齐 tokenHelper.tsx）==========
+    // ========== 工具函数（对齐 ThemeHelper.tsx）==========
 
     /**
      * 验证颜色值格式是否正确
      * 支持 #RGB、#RRGGBB、rgb()、rgba() 格式
-     * ★ 对齐 tokenHelper.tsx: isValidColor()
+     * ★ 对齐 ThemeHelper.tsx: isValidColor()
      */
     function isValidColor(colorValue) {
       if (!colorValue) return false;
@@ -807,7 +807,7 @@
       return antDesignColors.generate(hex);
     }
 
-    // ========== getCssVarHex（TokenHelper 真实方法，用于 ECharts 场景）==========
+    // ========== getCssVarHex（ThemeHelper 真实方法，用于 ECharts 场景）==========
     function getCssVarHex(varName) {
       const val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
       if (val.startsWith('#')) return val;
@@ -822,10 +822,10 @@
     let currentTheme = 'orange', currentButtonColor = null, currentNavColor = '#2563EB';
     const THEME_PRESETS = { orange:'#FF6B35', blue:'#2563EB', green:'#16A34A', purple:'#7C3AED', red:'#DC2626' };
 
-    // ========== 辅助：注入/更新 <style> 标签（★ 对齐 tokenHelper.tsx 方式）==========
+    // ========== 辅助：注入/更新 <style> 标签（★ 对齐 ThemeHelper.tsx 方式）==========
     /**
      * 注入或更新 <style> 标签
-     * ★ 对齐 tokenHelper.tsx 的实现方式：
+     * ★ 对齐 ThemeHelper.tsx 的实现方式：
      *   - 查找已有 style[data-theme-vars] 或 style[id=xxx]
      *   - 存在则 update textContent，不存在则 create + appendChild
      *
@@ -854,11 +854,11 @@
       }
     }
 
-    // ========== 核心 API: setBaseColor（★ 对齐 tokenHelper.tsx）==========
+    // ========== 核心 API: setBaseColor（★ 对齐 ThemeHelper.tsx）==========
     /**
-     * 设置品牌主色 — 模拟 TokenHelper.setBaseColor()
+     * 设置品牌主色 — 模拟 ThemeHelper.setBaseColor()
      *
-     * ★ 实现方式对齐 tokenHelper.tsx：
+     * ★ 实现方式对齐 ThemeHelper.tsx：
      *   1. 先验证颜色 isValidColor()
      *   2. 用 generate() 生成 10 色色板
      *   3. 构建包含 HEX + -RGB 双变量的 CSS 字符串
@@ -870,7 +870,7 @@
      *   - ★ hover 动态规则：isDarkColor? 浅→加深(colors[6]) : 深→变浅(colors[4])
      */
     function setBaseColor(hex) {
-      // ★ 验证（对齐 tokenHelper.tsx）
+      // ★ 验证（对齐 ThemeHelper.tsx）
       if (!isValidColor(hex)) {
         console.error(`[setBaseColor] Invalid color value: ${hex}`);
         return;
@@ -907,15 +907,15 @@
       console.log(`%c[setBaseColor] → ${hex.toUpperCase()} (hover=${isDarkColor(hex)?'变浅[4]':'加深[6]'})`, `color:${hex};font-weight:bold`);
     }
 
-    // ========== 核心 API: setButtonPrimaryColor（★ 对齐 tokenHelper.setButtonFilledPrimaryColor）==========
+    // ========== 核心 API: setButtonPrimaryColor（★ 对齐 ThemeHelper.setButtonFilledPrimaryColor）==========
     /**
-     * 设置按钮主色 — 模拟 TokenHelper.setButtonPrimaryColor()
+     * 设置按钮主色 — 模拟 ThemeHelper.setButtonPrimaryColor()
      *
      * ★ 简化设计：仅生成 --color-button-filled-primary-* 系列变量。
      *   border / outline / text 按钮可复用 --color-button-filled-primary 作为其文字色、
      *   边框色或半透明背景，无需额外定义 outline / text 专用变量。
      *
-     * ★ 对齐 tokenHelper.tsx：
+     * ★ 对齐 ThemeHelper.tsx：
      *   - 使用 <style> 标签注入
      *   - 色板索引：active = colors[6], disabled = colors[2], tint = colors[0]
      *   - ★ hover 动态：isDarkColor? 深→变浅(colors[4]) : 浅→加深(colors[6])
@@ -1294,7 +1294,7 @@
       console.log(
         '%c ✦ Neo 平台主题换肤 Demo 已加载\n\n' +
         '   设计方案：HEX 主变量 + -RGB 伴侣变量双输出\n' +
-        '   实现方式：<style> 标签注入（对齐 TokenHelper）\n' +
+        '   实现方式：<style> 标签注入（对齐 ThemeHelper）\n' +
         '   核心用法：rgba(var(--brand-color-rgb), 0.15)\n' +
         '   导航栏：自动识别深/浅模式（基于 YIQ 亮度公式）\n\n' +
         '   提示:\n' +
