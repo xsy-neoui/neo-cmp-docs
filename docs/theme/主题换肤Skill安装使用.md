@@ -177,6 +177,22 @@ ECharts 不支持 `var(--css-variable)` 写法，因此 Skill 会跳过图表配
 
 该文档是 Skill 的参考手册，详细描述了替换规则和要求；Skill 则是该手册的 AI 自动化实现，可以在项目中自动执行替换操作。
 
+## 验证主题换肤效果
+
+升级完成后，可通过浏览器控制台手动切换品牌色和按钮色，验证主题换肤是否生效：
+
+```js
+// 切换到紫色品牌色
+NeoThemeHelper.setBaseColor("#923dda")
+
+// 切换到橙色按钮色
+NeoThemeHelper.setButtonPrimaryColor("#ff6b35")
+```
+
+执行后页面中所有使用 CSS 变量的品牌色元素（按钮、链接、图标、边框等）应同步变化为对应颜色。
+
+> **提示**：[主题换肤在线 Demo](/theme-switch-demo.html) 也提供了交互式控制面板，可直观预览七种预设主题和自定义颜色的效果。
+
 ## 反馈与改进
 
 使用过程中遇到问题或有优化建议，欢迎提交到 [neo-cmp-docs Issues](https://github.com/xsy-neoui/neo-cmp-docs/issues)。
