@@ -17,6 +17,23 @@
 | `--brand-color-tint-light` | `--brand-color-tint-light-rgb` | `#a8d7ff` | 品牌次浅变体，浅色背景 / hover 背景 |
 | `--brand-color-disabled` | `--brand-color-disabled-rgb` | `#80bfff` | 品牌禁用态 |
 
+### 品牌色阶变量（10 个）
+
+> 品牌色阶 `--brand-color-1` ~ `--brand-color-10` 对应 `@ant-design/colors` 的 `generate()` 生成的 10 级色板。**1=最浅 → 10=最深**，`--brand-color-6` 为主品牌色。每个变量均有对应的 `-rgb` 伴侣变量。
+
+| CSS 变量 | -rgb 伴侣变量 | 默认色值 | 说明 |
+|:--|:--|:--|:--|
+| `--brand-color-1` | `--brand-color-1-rgb` | `#e6f4ff` | 品牌色阶 1 — 最浅色，大面积浅底色 |
+| `--brand-color-2` | `--brand-color-2-rgb` | `#a8d7ff` | 品牌色阶 2 — 次浅色，轻量浅底色 |
+| `--brand-color-3` | `--brand-color-3-rgb` | `#91caff` | 品牌色阶 3 — 浅色区，hover 背景等 |
+| `--brand-color-4` | `--brand-color-4-rgb` | `#80bfff` | 品牌色阶 4 — 禁用态底色 |
+| `--brand-color-5` | `--brand-color-5-rgb` | `#1a7aff` | 品牌色阶 5 — 次主色，hover 交互态 |
+| `--brand-color-6` | `--brand-color-6-rgb` | `#0564f5` | 品牌色阶 6 — ★ 主品牌色 |
+| `--brand-color-7` | `--brand-color-7-rgb` | `#004ccf` | 品牌色阶 7 — 加深色，active 按下态 |
+| `--brand-color-8` | `--brand-color-8-rgb` | `#003aa6` | 品牌色阶 8 — 深色变体，强强调 |
+| `--brand-color-9` | `--brand-color-9-rgb` | `#00297a` | 品牌色阶 9 — 深色区，文字高对比 |
+| `--brand-color-10` | `--brand-color-10-rgb` | `#001a4d` | 品牌色阶 10 — 最深色，极端强调 |
+
 ### 使用示例
 
 ```scss
@@ -553,6 +570,10 @@ const MyChart: React.FC = () => {
 ### 品牌核心（6 个）
 
 `--brand-color` · `--brand-color-hover` · `--brand-color-shade` · `--brand-color-tint` · `--brand-color-tint-light` · `--brand-color-disabled`
+
+### 品牌色阶（10 个）
+
+`--brand-color-1` · `--brand-color-2` · `--brand-color-3` · `--brand-color-4` · `--brand-color-5` · `--brand-color-6` · `--brand-color-7` · `--brand-color-8` · `--brand-color-9` · `--brand-color-10`
 
 ### 背景（6 个）
 
