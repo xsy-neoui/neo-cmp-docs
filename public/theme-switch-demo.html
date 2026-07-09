@@ -679,6 +679,12 @@
         <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableCoreVars"></tbody></table>
       </div>
 
+      <!-- 品牌色阶变量（10对 = 20行） -->
+      <div class="vars-section">
+        <div class="category-header">品牌色阶变量 (--brand-color-1~10) <span class="category-count">10 对（20 行）</span></div>
+        <table class="vars-table"><thead><tr><th>色块</th><th>CSS 变量名</th><th>当前值</th><th>CSS变量说明</th></tr></thead><tbody id="tableBrandScaleVars"></tbody></table>
+      </div>
+
       <!-- 二、按钮色变量（8个 + 5个 -rgb 伴侣 ≈ 13行） -->
       <div class="vars-section">
         <div class="category-header">二、按钮色变量 (--color-button-filled-primary-*) <span class="category-count">11+8 个（含 -rgb 伴侣 + 3个次按钮变量，fill/border/outline/text 共用）</span></div>
@@ -899,6 +905,29 @@
           --brand-color-tint-rgb: ${hexToRgbNumeric(colors[0])};
           --brand-color-tint-light-rgb: ${hexToRgbNumeric(colors[1])};
           --brand-color-disabled-rgb: ${hexToRgbNumeric(colors[3])};
+
+          /* 品牌色阶（1~10，由浅到深）— HEX 主变量 */
+          --brand-color-1: ${colors[0]};
+          --brand-color-2: ${colors[1]};
+          --brand-color-3: ${colors[2]};
+          --brand-color-4: ${colors[3]};
+          --brand-color-5: ${colors[4]};
+          --brand-color-6: ${colors[5]};
+          --brand-color-7: ${colors[6]};
+          --brand-color-8: ${colors[7]};
+          --brand-color-9: ${colors[8]};
+          --brand-color-10: ${colors[9]};
+          /* 品牌色阶 — -RGB 伴侣变量 */
+          --brand-color-1-rgb: ${hexToRgbNumeric(colors[0])};
+          --brand-color-2-rgb: ${hexToRgbNumeric(colors[1])};
+          --brand-color-3-rgb: ${hexToRgbNumeric(colors[2])};
+          --brand-color-4-rgb: ${hexToRgbNumeric(colors[3])};
+          --brand-color-5-rgb: ${hexToRgbNumeric(colors[4])};
+          --brand-color-6-rgb: ${hexToRgbNumeric(colors[5])};
+          --brand-color-7-rgb: ${hexToRgbNumeric(colors[6])};
+          --brand-color-8-rgb: ${hexToRgbNumeric(colors[7])};
+          --brand-color-9-rgb: ${hexToRgbNumeric(colors[8])};
+          --brand-color-10-rgb: ${hexToRgbNumeric(colors[9])};
         }
       `;
 
@@ -1188,6 +1217,18 @@
         ['--brand-color-tint', true, '品牌最浅变体 — 大面积背景底色'],
         ['--brand-color-tint-light', true, '品牌次浅变体 — 浅色背景/hover 背景'],
         ['--brand-color-disabled', true, '品牌禁用态 — 按钮/输入框等禁用风格']
+      ]},
+      { tid:'tableBrandScaleVars', vars:[
+        ['--brand-color-1', true, '品牌色阶 1 — 最浅 (colors[0])'],
+        ['--brand-color-2', true, '品牌色阶 2 — 次浅 (colors[1])'],
+        ['--brand-color-3', true, '品牌色阶 3 (colors[2])'],
+        ['--brand-color-4', true, '品牌色阶 4 — 禁用态色 (colors[3])'],
+        ['--brand-color-5', true, '品牌色阶 5 (colors[4])'],
+        ['--brand-color-6', true, '品牌色阶 6 — 原始主色 (colors[5])'],
+        ['--brand-color-7', true, '品牌色阶 7 — 深色变体 (colors[6])'],
+        ['--brand-color-8', true, '品牌色阶 8 (colors[7])'],
+        ['--brand-color-9', true, '品牌色阶 9 (colors[8])'],
+        ['--brand-color-10', true, '品牌色阶 10 — 最深 (colors[9])']
       ]},
       { tid:'tableBtnVars', vars:[
         ['--color-button-filled-primary', true, '填充主按钮 — 正常态背景色（★ 同时可用于 border/outline/text 颜色）'],
