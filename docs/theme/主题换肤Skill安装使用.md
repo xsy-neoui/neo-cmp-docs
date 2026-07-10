@@ -12,7 +12,7 @@
 
 - 🔍 **硬编码色值替换**：自动识别 50+ 种品牌相关硬编码色值（含 6 位 hex、8 位 hex、rgb/rgba 格式），支持完全匹配与 1-2 色阶近似匹配，替换为 `var(--brand-color)` 等 CSS 变量。**执行后自动进行遗漏检测，有遗漏则自动重试直到全部替换完毕**
 - 🔄 **旧 CSS 变量迁移**：将带 `-bg` 后缀的旧版按钮色变量名自动迁移为新版命名（7 对映射）
-- 🎨 **按钮色改造**：遍历所有 primary 模式按钮（`ant-btn-primary` / `button-primary` / `btn-primary` 等），按背景色白/非白区分规则改造为按钮色 CSS 变量。**执行后自动进行遗漏检测，有遗漏则自动重试直到全部改造完毕**
+- 🎨 **按钮色改造**：遍历所有 primary 模式按钮（`ant-btn-primary` / `button-primary` / `btn-primary` 等），按背景色白/非白区分规则改造为按钮色 CSS 变量；非白色背景按钮的文字色 `color` 同步改用按钮字体色变量（自动对比色），避免文字与背景色相近导致模糊。**执行后自动进行遗漏检测，有遗漏则自动重试直到全部改造完毕**
 - 📊 **生成替换报告**：汇总所有改动到 `Neo主题换肤功能升级报告.md`，包含完全匹配详情、近似匹配详情（需人工复核）、跳过详情
 
 ## 环境准备
@@ -98,7 +98,7 @@ AI 会按照以下四个任务**严格顺序**执行：
 1. 搜索所有 primary 模式按钮样式块（`ant-btn-primary` / `button-primary` / `btn-primary` / `a-Button--primary` 等）
 2. 按背景色区分规则改造：
    - **白色背景** primary 按钮 → `color` 和 `border-color` 替换为按钮色变量
-   - **非白色背景** primary 按钮 → `background-color` 替换为按钮色变量
+   - **非白色背景** primary 按钮 → `background-color` 替换为按钮色变量；文字色 `color` 替换为按钮字体色变量（非 hover/active 态 → `--color-button-filled-primary-color`，hover/active 态 → `--color-button-filled-primary-color-hover`），避免文字色与按钮背景色相近导致文字模糊
 3. **执行遗漏检测**：改造完成后自动搜索残留硬编码按钮色，存在遗漏则**自动重试**直到全部改造
 
 #### 任务 4：生成升级报告
