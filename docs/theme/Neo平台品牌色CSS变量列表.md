@@ -307,7 +307,7 @@
 |:--|:--|:--|
 | `--color-button-filled-primary-secondary` | `--color-button-filled-primary-secondary-rgb` | ★ 次按钮 — 正常态背景（降一级变浅，colors[4]） |
 | `--color-button-filled-primary-secondary-hover` | `--color-button-filled-primary-secondary-hover-rgb` | ★ 次按钮 — 悬停态背景（比 hover 降一级变浅） |
-| `--color-button-filled-primary-secondary-disable` | `--color-button-filled-primary-secondary-disable-rgb` | ★ 次按钮 — 禁用态背景（比 disable 降一级变浅） |
+| `--color-button-filled-primary-secondary-disabled` | `--color-button-filled-primary-secondary-disabled-rgb` | ★ 次按钮 — 禁用态背景（比 disabled 降一级变浅） |
 
 > 均配有对应 `-rgb` 伴侣变量。
 
@@ -405,7 +405,7 @@
   }
 
   &:disabled {
-    background-color: var(--color-button-filled-primary-secondary-disable);
+    background-color: var(--color-button-filled-primary-secondary-disabled);
     color: var(--color-button-filled-primary-color-disabled);
     cursor: not-allowed;
   }
@@ -593,7 +593,7 @@ const MyChart: React.FC = () => {
 
 ### 按钮色（11 个）
 
-`--color-button-filled-primary` · `--color-button-filled-primary-hover` · `--color-button-filled-primary-active` · `--color-button-filled-primary-tint` · `--color-button-filled-primary-disabled` · `--color-button-filled-primary-color` · `--color-button-filled-primary-color-hover` · `--color-button-filled-primary-color-disabled` · `--color-button-filled-primary-secondary` · `--color-button-filled-primary-secondary-hover` · `--color-button-filled-primary-secondary-disable`
+`--color-button-filled-primary` · `--color-button-filled-primary-hover` · `--color-button-filled-primary-active` · `--color-button-filled-primary-tint` · `--color-button-filled-primary-disabled` · `--color-button-filled-primary-color` · `--color-button-filled-primary-color-hover` · `--color-button-filled-primary-color-disabled` · `--color-button-filled-primary-secondary` · `--color-button-filled-primary-secondary-hover` · `--color-button-filled-primary-secondary-disabled`
 
 ### 导航色（11 个）
 
