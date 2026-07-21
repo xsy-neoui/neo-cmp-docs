@@ -477,13 +477,13 @@
         <div class="control-group">
           <span class="control-label">导航栏</span>
           <button class="theme-btn" id="navColorOrange" onclick="setNavColor('#FF6B35')" style="--btn-color:#FF6B35;--btn-rgb:255,107,53"><span class="theme-btn__dot"></span>橙</button>
-          <button class="theme-btn active" id="navColorBlue" onclick="setNavColor('#2563EB')" style="--btn-color:#2563EB;--btn-rgb:37,99,235"><span class="theme-btn__dot"></span>蓝</button>
-          <button class="theme-btn" id="navColorGreen" onclick="setNavColor('#16A34A')" style="--btn-color:#16A34A;--btn-rgb:22,163,74"><span class="theme-btn__dot"></span>绿</button>
+          <button class="theme-btn" id="navColorBlue" onclick="setNavColor('#2563EB')" style="--btn-color:#2563EB;--btn-rgb:37,99,235"><span class="theme-btn__dot"></span>蓝</button>
+          <button class="theme-btn active" id="navColorGreen" onclick="setNavColor('#16A34A')" style="--btn-color:#16A34A;--btn-rgb:22,163,74"><span class="theme-btn__dot"></span>绿</button>
           <button class="theme-btn" id="navColorPurple" onclick="setNavColor('#7C3AED')" style="--btn-color:#7C3AED;--btn-rgb:124,58,237"><span class="theme-btn__dot"></span>紫</button>
           <button class="theme-btn" id="navColorRed" onclick="setNavColor('#DC2626')" style="--btn-color:#DC2626;--btn-rgb:220,38,38"><span class="theme-btn__dot"></span>红</button>
           <div class="color-picker-wrapper">
-            <input type="color" id="customNavColor" value="#2563EB" class="color-picker-input" onchange="setNavColor(this.value)">
-            <span class="color-hex-display" id="customNavHex">#2563EB</span>
+            <input type="color" id="customNavColor" value="#16A34A" class="color-picker-input" onchange="setNavColor(this.value)">
+            <span class="color-hex-display" id="customNavHex">#16A34A</span>
           </div>
           <span class="nav-mode-indicator nav-mode-indicator--dark" id="navModeIndicator">
             <span id="navModeIcon">🌙</span>
@@ -496,14 +496,14 @@
       <div class="control-row">
         <div class="control-group">
           <span class="control-label">品牌色</span>
-          <button class="theme-btn active" data-theme="orange" onclick="setTheme('orange')" style="--btn-color:#FF6B35;--btn-rgb:255,107,53"><span class="theme-btn__dot"></span>橙</button>
+          <button class="theme-btn" data-theme="orange" onclick="setTheme('orange')" style="--btn-color:#FF6B35;--btn-rgb:255,107,53"><span class="theme-btn__dot"></span>橙</button>
           <button class="theme-btn" data-theme="blue" onclick="setTheme('blue')" style="--btn-color:#2563EB;--btn-rgb:37,99,235"><span class="theme-btn__dot"></span>蓝</button>
           <button class="theme-btn" data-theme="green" onclick="setTheme('green')" style="--btn-color:#16A34A;--btn-rgb:22,163,74"><span class="theme-btn__dot"></span>绿</button>
-          <button class="theme-btn" data-theme="purple" onclick="setTheme('purple')" style="--btn-color:#7C3AED;--btn-rgb:124,58,237"><span class="theme-btn__dot"></span>紫</button>
+          <button class="theme-btn active" data-theme="purple" onclick="setTheme('purple')" style="--btn-color:#7C3AED;--btn-rgb:124,58,237"><span class="theme-btn__dot"></span>紫</button>
           <button class="theme-btn" data-theme="red" onclick="setTheme('red')" style="--btn-color:#DC2626;--btn-rgb:220,38,38"><span class="theme-btn__dot"></span>红</button>
           <div class="color-picker-wrapper">
-            <input type="color" id="customBrandColor" value="#FF6B35" class="color-picker-input" onchange="setCustomBrandColor(this.value)">
-            <span class="color-hex-display" id="customBrandHex">#FF6B35</span>
+            <input type="color" id="customBrandColor" value="#7C3AED" class="color-picker-input" onchange="setCustomBrandColor(this.value)">
+            <span class="color-hex-display" id="customBrandHex">#7C3AED</span>
           </div>
           <span class="nav-mode-indicator nav-mode-indicator--dark" id="brandModeIndicator">
             <span id="brandModeIcon">🌙</span>
@@ -516,12 +516,12 @@
       <div class="control-row">
         <div class="control-group">
           <span class="control-label">按钮色</span>
-          <button class="theme-btn active" id="btnColorFollow" onclick="setButtonColor('follow')" style="--btn-color:var(--brand-color);--btn-rgb:inherit"><span class="theme-btn__dot" id="btnFollowDot"></span>跟随品牌</button>
+          <button class="theme-btn" id="btnColorFollow" onclick="setButtonColor('follow')" style="--btn-color:var(--brand-color);--btn-rgb:inherit"><span class="theme-btn__dot" id="btnFollowDot"></span>跟随品牌</button>
           <button class="theme-btn" id="btnColorGreen" onclick="setButtonColor('#52c41a')" style="--btn-color:#52c41a;--btn-rgb:82,196,26"><span class="theme-btn__dot"></span>绿</button>
-          <button class="theme-btn" id="btnColorPink" onclick="setButtonColor('#eb2f96')" style="--btn-color:#EB2F96;--btn-rgb:235,47,150"><span class="theme-btn__dot"></span>粉</button>
+          <button class="theme-btn active" id="btnColorPink" onclick="setButtonColor('#e01a87')" style="--btn-color:#e01a87;--btn-rgb:224,26,135"><span class="theme-btn__dot"></span>粉</button>
           <div class="color-picker-wrapper">
-            <input type="color" id="customBtnColor" value="#FF6B35" class="color-picker-input" onchange="setButtonColor(this.value)">
-            <span class="color-hex-display" id="customBtnHex">#FF6B35</span>
+            <input type="color" id="customBtnColor" value="#e01a87" class="color-picker-input" onchange="setButtonColor(this.value)">
+            <span class="color-hex-display" id="customBtnHex">#e01a87</span>
           </div>
         </div>
       </div>
@@ -788,7 +788,7 @@
     /** 判断颜色是深色还是浅色（基于 YIQ 色彩空间亮度公式）*/
     function isDarkColor(hex) {
       const { r, g, b } = hexToRgb(hex);
-      return ((r*299)+(g*587)+(b*114))/1000 < 128;
+      return ((r*299)+(g*587)+(b*114))/1000 < 175;
     }
 
     /**
@@ -826,7 +826,7 @@
     }
 
     // ========== 状态管理 ==========
-    let currentTheme = 'orange', currentButtonColor = null, currentNavColor = '#2563EB';
+    let currentTheme = 'purple', currentButtonColor = '#e01a87', currentNavColor = '#16A34A';
     const THEME_PRESETS = { orange:'#FF6B35', blue:'#2563EB', green:'#16A34A', purple:'#7C3AED', red:'#DC2626' };
 
     // ========== 辅助：注入/更新 <style> 标签（★ 对齐 ThemeHelper.tsx 方式）==========
@@ -1031,8 +1031,8 @@
             --brand-nav-header-icon-rgb: 255, 255, 255;
             --brand-nav-header-icon-hover: rgba(255, 255, 255, 0.85);
             --brand-nav-header-icon-hover-rgb: 255, 255, 255;
-            --brand-nav-header-launcher-icon: var(--brand-color);
-            --brand-nav-header-launcher-icon-rgb: var(--brand-color-rgb);
+            --brand-nav-header-launcher-icon: #ffffff;
+            --brand-nav-header-launcher-icon-rgb: 255, 255, 255;
             --brand-nav-header-select: var(--brand-color-shade);
             --brand-nav-header-select-bg: rgba(255, 255, 255, 0.20);
             --brand-nav-header-elem-opacity: rgba(60, 80, 224, 0.08);
@@ -1165,7 +1165,7 @@
         setButtonPrimaryColor(colorOrFollow);
         document.getElementById('btnColorFollow').classList.remove('active');
         if(colorOrFollow === '#52c41a') document.getElementById('btnColorGreen').classList.add('active');
-        else if(colorOrFollow === '#eb2f96') document.getElementById('btnColorPink').classList.add('active');
+        else if(colorOrFollow === '#e01a87') document.getElementById('btnColorPink').classList.add('active');
         document.getElementById('customBtnColor').value = colorOrFollow;
         document.getElementById('customBtnHex').textContent = colorOrFollow;
       }
@@ -1331,7 +1331,8 @@
 
     // ========== 初始化 ==========
     document.addEventListener('DOMContentLoaded',()=>{
-      setTheme('orange');
+      setTheme('purple');
+      setButtonPrimaryColor('#e01a87');
 
       console.log(
         '%c ✦ Neo 平台主题换肤 Demo 已加载\n\n' +
